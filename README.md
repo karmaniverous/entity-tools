@@ -1,6 +1,6 @@
 <!-- TYPEDOC_EXCLUDE -->
 
-> [API Documentation](https://karmaniverous.github.io/npm-package-template-ts) • [CHANGELOG](https://github.com/karmaniverous/npm-package-template-ts/tree/main/CHANGELOG.md)
+> [API Documentation](https://karmaniverous.github.io/entity-tools) • [CHANGELOG](https://github.com/karmaniverous/entity-tools/tree/main/CHANGELOG.md)
 
 <!-- /TYPEDOC_EXCLUDE -->
 
