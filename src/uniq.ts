@@ -1,10 +1,16 @@
 import { unique } from 'radash';
 
-import type { DefaultIndexableProperty, Entity, Indexable } from './types';
+import type {
+  DefaultIndexableProperty,
+  DefaultProperty,
+  Entity,
+  Indexable,
+} from './types';
 
 /**
  * De-dupes an array of {@link Entity | `Entity`} by a set of Indexable keys.
  *
+ * @typeParam P - Entity property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
  * @typeParam I - {@link Indexable | `Indexable`} property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}, and should be specified if necessary.
  * @typeParam E - {@link Entity | `Entity`} type. Should be inferred from items.
  *
@@ -17,9 +23,13 @@ import type { DefaultIndexableProperty, Entity, Indexable } from './types';
  * @remarks
  * De-dupes items by the elements of index. null and undefined values are considered equivalent.
  */
-export const uniq = <I = DefaultIndexableProperty, E extends Entity = Entity>(
+export const uniq = <
+  P = DefaultProperty,
+  I = DefaultIndexableProperty,
+  E extends Entity<P> = Entity<P>,
+>(
   items: E[] = [],
-  index: Indexable<E, I>[] = [],
+  index: Indexable<E, P, I>[] = [],
   delimiter = '~',
 ): E[] =>
   unique(items, (item) => index.map((key) => item[key] ?? '').join(delimiter));

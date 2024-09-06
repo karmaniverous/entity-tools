@@ -42,6 +42,7 @@ export type Entity<P = DefaultProperty> = Record<string, P>;
  * Generate a union of indexable {@link Entity | `Entity`} keys.
  *
  * @typeParam E - {@link Entity | `Entity`} type.
+ * @typeParam P - Entity property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
  * @typeParam I - Indexable property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}.
  *
  * @example
@@ -60,7 +61,11 @@ export type Entity<P = DefaultProperty> = Record<string, P>;
  * type IndexableKeys = Indexable<User, IndexableProperty>; // 'id' | 'name'
  * ```
  */
-export type Indexable<E extends Entity, I = DefaultIndexableProperty> = keyof {
+export type Indexable<
+  E extends Entity<P>,
+  P = DefaultProperty,
+  I = DefaultIndexableProperty,
+> = keyof {
   [P in keyof E as E[P] extends I ? P : never]: E[P];
 };
 

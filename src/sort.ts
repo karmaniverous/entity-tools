@@ -2,6 +2,7 @@ import { isNumber, isString } from 'radash';
 
 import {
   type DefaultIndexableProperty,
+  type DefaultProperty,
   type Entity,
   type Indexable,
   isNil,
@@ -10,6 +11,7 @@ import {
 /**
  * Sort an array of {@link Entity | `Entity`} progressively by a set of {@link Indexable | `Indexable`} keys.
  *
+ * @typeParam P - Entity property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
  * @typeParam I - {@link Indexable | `Indexable`} property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}, and should be specified if necessary.
  * @typeParam E - Entity type. Should be inferred from items.
  *
@@ -26,10 +28,14 @@ import {
  *
  * An `index` element that is present and `true` in `desc` will sort in descending order, otherwise ascending.
  */
-export const sort = <I = DefaultIndexableProperty, E extends Entity = Entity>(
+export const sort = <
+  P = DefaultProperty,
+  I = DefaultIndexableProperty,
+  E extends Entity<P> = Entity<P>,
+>(
   items: E[] = [],
-  index: Indexable<E, I>[] = [],
-  desc: { [key in Indexable<E, I>]?: boolean } = {},
+  index: Indexable<E, P, I>[] = [],
+  desc: { [key in Indexable<E, P, I>]?: boolean } = {},
 ): E[] =>
   [...items].sort((a, b) => {
     let comp = 0;
