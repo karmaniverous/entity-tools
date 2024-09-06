@@ -9,11 +9,24 @@ import {
 } from './types';
 
 /**
+ * Maps Entity IndexableProperty keys to boolean values. When `true`, the corresponding key will sort in descending order.
+ *
+ * @typeParam P - {@link Entity | `Entity`} property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
+ * @typeParam I - {@link Indexable | `Indexable`} property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}, and should be specified if necessary.
+ * @typeParam E - {@link Entity | `Entity`} type.
+ */
+export type DescMap<
+  P = DefaultProperty,
+  I = DefaultIndexableProperty,
+  E extends Entity<P> = Entity<P>,
+> = { [key in Indexable<E, P, I>]?: boolean };
+
+/**
  * Sort an array of {@link Entity | `Entity`} progressively by a set of {@link Indexable | `Indexable`} keys.
  *
- * @typeParam P - Entity property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
+ * @typeParam P - {@link Entity | `Entity`} property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
  * @typeParam I - {@link Indexable | `Indexable`} property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}, and should be specified if necessary.
- * @typeParam E - Entity type. Should be inferred from items.
+ * @typeParam E - {@link Entity | `Entity`} type. Should be inferred from items.
  *
  * @param items - Array of {@link Entity | `Entity`}.
  * @param index - Array of Indexable {@link Entity | `Entity`} keys.
@@ -35,7 +48,7 @@ export const sort = <
 >(
   items: E[] = [],
   index: Indexable<E, P, I>[] = [],
-  desc: { [key in Indexable<E, P, I>]?: boolean } = {},
+  desc: DescMap<P, I, E> = {},
 ): E[] =>
   [...items].sort((a, b) => {
     let comp = 0;
