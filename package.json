@@ -95,7 +95,7 @@
         "npm run test",
         "npm run build"
       ],
-      "after:bump": [
+      "before:npm": [
         "npx auto-changelog -p",
         "npm run docs",
         "git add -A",
