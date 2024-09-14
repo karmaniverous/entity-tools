@@ -1,8 +1,12 @@
-export { type DescMap, sort } from './sort';
+export { isNil, type Nil } from './Nil';
+export { sort, type SortOrder } from './sort';
 export type {
-  DefaultIndexableProperty,
-  DefaultProperty,
   Entity,
-  Indexable,
+  Exactify,
+  PropertiesInTypeMap,
+  PropertiesNotInTypeMap,
+  PropertiesNotOfType,
+  PropertiesOfType,
+  StringifiableTypes,
+  TypeMap,
 } from './types';
-export { uniq } from './uniq';

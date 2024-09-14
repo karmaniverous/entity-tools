@@ -1,73 +1,124 @@
 /**
- * Default {@link Entity | `Entity`} property types.
- */
-export type DefaultProperty =
-  | string
-  | number
-  | boolean
-  | null
-  | undefined
-  | { [key: string]: DefaultProperty }
-  | DefaultProperty[];
-
-/**
- * Default indexable {@link Entity | `Entity`} property types. Types that do not intersect with valid property types will be ignored.
- */
-export type DefaultIndexableProperty = number | string | null | undefined;
-
-/**
- * Generate an Entity type.
- *
- * Extending from this type prevents use of invalid property types.
- *
- * @typeParam P - Entity property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
+ * The base TypeMap type. Relates types to the string token identifying the type in runtime code. All TypeMaps should extend this type.
  *
  * @example
- * ```ts
- * // Say the database doesn't support undefined values.
- * type Property = Exclude<DefaultProperty, undefined>;
- *
- * // Define User entity interface. Omit the type argument if using the DefaultProperty type.
- * interface User extends Entity<Property> {
- *   id: number;
- *   name: string;
+ * ```
+ * interface StringifiableTypes extends TypeMap {
+ *   string: string;
+ *   number: number;
+ *   boolean: boolean;
+ *   bigint: bigint;
  * }
  * ```
  *
- * This is a contrived example, as a more flexible solution would be to keep the undefined type and strip undefined properties before posting to the database.
+ * @category Type Maps
  */
-export type Entity<P = DefaultProperty> = Record<string, P>;
+export type TypeMap = Record<string, unknown>;
 
 /**
- * Generate a union of indexable {@link Entity | `Entity`} keys.
+ * The default {@link TypeMap | `TypeMap`} representing indexable types.
  *
- * @typeParam E - {@link Entity | `Entity`} type.
- * @typeParam P - Entity property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
- * @typeParam I - Indexable property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}.
- *
- * @example
- * ```ts
- * // Say the DB can't index undefined values.
- * type IndexableProperty = Exclude<DefaultIndexableProperty, undefined>;
- *
- * // Define User entity interface. Uses default Property type.
- * interface User extends Entity {
- *   id: number;
- *   name: string;
- *   optional?: string;              // Not indexable.
- *   data: Record<string, Property>; // Not indexable.
- * }
- *
- * type IndexableKeys = Indexable<User, IndexableProperty>; // 'id' | 'name'
- * ```
+ * @category Type Maps
  */
-export type Indexable<
-  E extends Entity<P>,
-  P = DefaultProperty,
-  I = DefaultIndexableProperty,
-> = keyof {
-  [P in keyof E as E[P] extends I ? P : never]: E[P];
+export interface StringifiableTypes extends TypeMap {
+  string: string;
+  number: number;
+  boolean: boolean;
+  bigint: bigint;
+}
+
+/**
+ * Strips the generic `[x: string]: unknown` property from `Record<string, unknown>` type.
+ *
+ * @typeParam T - The `Record<string, unknown>` type.
+ *
+ * @returns The `Record<string, unknown>` type without the generic property.
+ *
+ * @category Utilities
+ */
+export type Exactify<T extends Record<string, unknown>> = {
+  [P in keyof T as string extends P ? never : P]: T[P];
 };
 
-export const isNil = (value: unknown): value is null | undefined =>
-  value === null || value === undefined;
+/**
+ * The base Entity type. All Entities should extend this type.
+ *
+ * @category Entities
+ */
+export type Entity = Record<string, unknown>;
+
+/**
+ * Generates a union of the keys of an {@link Entity | `Entity`} type whose values are of a given type.
+ *
+ * @typeParam E - The {@link Entity | `Entity`} type.
+ * @typeParam T - The type to filter by.
+ *
+ * @returns A union of the keys of {@link Entity | `Entity`} `E` whose values are of type `T`.
+ *
+ * @category Entities
+ */
+export type PropertiesOfType<E extends Entity, T> = keyof {
+  [Property in keyof Exactify<E> as [T] extends [never]
+    ? [NonNullable<E[Property]>] extends [never]
+      ? Property
+      : never
+    : [NonNullable<E[Property]>] extends [never]
+      ? never
+      : NonNullable<E[Property]> extends T
+        ? Property
+        : never]: never;
+};
+
+/**
+ * Generates a union of the keys of an {@link Entity | `Entity`} type whose values are not of a given type.
+ *
+ * @typeParam E - The {@link Entity | `Entity`} type.
+ * @typeParam T - The type to filter by.
+ *
+ * @returns A union of the keys of {@link Entity | `Entity`} `E` whose values are not of type `T`.
+ *
+ * @category Entities
+ */
+export type PropertiesNotOfType<E extends Entity, T> = keyof {
+  [Property in keyof Exactify<E> as [T] extends [never]
+    ? [NonNullable<E[Property]>] extends [never]
+      ? never
+      : Property
+    : [NonNullable<E[Property]>] extends [never]
+      ? NonNullable<E[Property]> extends T
+        ? Property
+        : never
+      : never]: never;
+};
+
+/**
+ * Generates a union of the keys of an {@link Entity | `Entity`} type that are represented in a given {@link TypeMap | `TypeMap`}.
+ *
+ * @typeParam E - The {@link Entity | `Entity`} type.
+ * @typeParam T - The {@link TypeMap | `TypeMap`}.
+ *
+ * @returns A union of the keys of {@link Entity | `Entity`} `E` whose types are in {@link TypeMap | `TypeMap`} `T`.
+ *
+ * @category Entities
+ * @category Type Maps
+ */
+export type PropertiesInTypeMap<
+  E extends Entity,
+  T extends TypeMap,
+> = PropertiesOfType<E, T[keyof Exactify<T>]>;
+
+/**
+ * Generates a union of the keys of an {@link Entity | `Entity`} type that are not represented in a given {@link TypeMap | `TypeMap`}.
+ *
+ * @typeParam E - The {@link Entity | `Entity`} type.
+ * @typeParam T - The {@link TypeMap | `TypeMap`}.
+ *
+ * @returns A union of the keys of {@link Entity | `Entity`} `E` whose types are not in {@link TypeMap | `TypeMap`} `T`.
+ *
+ * @category Entities
+ * @category Type Maps
+ */
+export type PropertiesNotInTypeMap<
+  E extends Entity,
+  T extends TypeMap,
+> = PropertiesNotOfType<E, T[keyof Exactify<T>]>;

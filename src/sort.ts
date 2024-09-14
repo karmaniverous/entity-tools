@@ -1,69 +1,65 @@
 import { isNumber, isString } from 'radash';
 
-import {
-  type DefaultIndexableProperty,
-  type DefaultProperty,
-  type Entity,
-  type Indexable,
-  isNil,
-} from './types';
+import { isNil } from './Nil';
+import type { Entity } from './types';
 
 /**
- * Maps Entity IndexableProperty keys to boolean values. When `true`, the corresponding key will sort in descending order.
+ * Specifies progressive sorting on properties of `Item`.
  *
- * @typeParam P - {@link Entity | `Entity`} property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
- * @typeParam I - {@link Indexable | `Indexable`} property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}, and should be specified if necessary.
- * @typeParam E - {@link Entity | `Entity`} type.
+ * @typeParam Item - Item type, must extend {@link Entity | `Entity`}.
+ *
+ * @category Sort
  */
-export type DescMap<
-  P = DefaultProperty,
-  I = DefaultIndexableProperty,
-  E extends Entity<P> = Entity<P>,
-> = { [key in Indexable<E, P, I>]?: boolean };
+export type SortOrder<Item extends Entity> = {
+  property: keyof Item;
+  desc?: boolean;
+}[];
 
 /**
- * Sort an array of {@link Entity | `Entity`} progressively by a set of {@link Indexable | `Indexable`} keys.
+ * Sort an array of `Item` progressively by `sort`.
  *
- * @typeParam P - {@link Entity | `Entity`} property type. Defaults to {@link DefaultProperty | `DefaultProperty`}.
- * @typeParam I - {@link Indexable | `Indexable`} property type. Defaults to {@link DefaultIndexableProperty | `DefaultIndexableProperty`}, and should be specified if necessary.
- * @typeParam E - {@link Entity | `Entity`} type. Should be inferred from items.
+ * @typeParam Item - Item type. Must extend {@link Entity | `Entity`}.
  *
- * @param items - Array of {@link Entity | `Entity`}.
- * @param index - Array of Indexable {@link Entity | `Entity`} keys.
- * @param desc - Map of {@link Indexable | `Indexable`} {@link Entity | `Entity`} keys to boolean values. If a value is true, the corresponding key will sort in descending order.
+ * @param items - Array of `Item`.
+ * @param sortOrder - {@link SortOrder | `SortOrder`} array.
  *
  * @returns Sorted `items`.
  *
  * @remarks
- * Sorts `items` progresively by the elements of `index`, passing to the next element if values at the current element are equal.
+ * Sorts `items` progresively by the elements of `sortOrder`, passing to the next element if values at the current element are equal.
+ *
+ * Comparisons are made as expected for `number`, `string`, and `bigint` types.
  *
  * `null` and `undefined` values are considered equivalent and less than any other value.
  *
- * An `index` element that is present and `true` in `desc` will sort in descending order, otherwise ascending.
+ *  Other types are compared by truthiness, where truthy is greater than falsy.
+ *
+ * @category Sort
  */
-export const sort = <
-  P = DefaultProperty,
-  I = DefaultIndexableProperty,
-  E extends Entity<P> = Entity<P>,
->(
-  items: E[] = [],
-  index: Indexable<E, P, I>[] = [],
-  desc: DescMap<P, I, E> = {},
-): E[] =>
+export const sort = <Item extends Entity>(
+  items: Item[] = [],
+  sortOrder: SortOrder<Item> = [],
+): Item[] =>
   [...items].sort((a, b) => {
     let comp = 0;
 
-    for (const key of index) {
-      if (isNumber(a[key]) && isNumber(b[key])) comp = a[key] - b[key];
+    for (const { property, desc } of sortOrder) {
+      if (isNumber(a[property]) && isNumber(b[property]))
+        comp = a[property] - b[property];
+      else if (isString(a[property]) && isString(b[property]))
+        comp = a[property].localeCompare(b[property]);
+      else if (
+        typeof a[property] === 'bigint' &&
+        typeof b[property] === 'bigint'
+      )
+        comp =
+          a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+      else if (!isNil(a[property]) && isNil(b[property])) comp = 1;
+      else if (isNil(a[property]) && !isNil(b[property])) comp = -1;
+      else if (a[property] && !b[property]) comp = 1;
+      else if (!a[property] && b[property]) comp = -1;
 
-      if (isString(a[key]) && isString(b[key]))
-        comp = a[key].localeCompare(b[key]);
-
-      if (!isNil(a[key]) && isNil(b[key])) comp = 1;
-
-      if (isNil(a[key]) && !isNil(b[key])) comp = -1;
-
-      if (comp) return desc[key] ? -comp : comp;
+      if (comp) return desc ? -comp : comp;
     }
 
     return comp;
