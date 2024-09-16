@@ -34,4 +34,9 @@ export interface DefaultTranscodeMap extends TranscodeMap {
    * Supports transcoding of `string` values. See {@link defaultTranscodes | `defaultTranscodes`} for implementation details.
    */
   string: string;
+
+  /**
+   * Supports transcoding of UNIX timestamp values. See {@link defaultTranscodes | `defaultTranscodes`} for implementation details.
+   */
+  timestamp: number;
 }

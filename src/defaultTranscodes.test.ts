@@ -268,4 +268,66 @@ describe('defaultTranscodes', function () {
       });
     });
   });
+
+  describe('timestamp', function () {
+    describe('encode', function () {
+      it('should encode valid timestamp', function () {
+        expect(defaultTranscodes.timestamp.encode(1234567890123)).to.equal(
+          '1234567890123',
+        );
+      });
+
+      it('should encode short timestamp', function () {
+        expect(defaultTranscodes.timestamp.encode(123456)).to.equal(
+          '0000000123456',
+        );
+      });
+
+      it('should fail on negative timestamp', function () {
+        expect(() => defaultTranscodes.timestamp.encode(-123456)).to.throw(
+          'invalid timestamp',
+        );
+      });
+
+      it('should fail on non-int', function () {
+        expect(() =>
+          defaultTranscodes.timestamp.encode(-12345678901.23456),
+        ).to.throw('invalid timestamp');
+      });
+
+      it('should fail on invalid type', function () {
+        // @ts-expect-error invalid type
+        expect(() => defaultTranscodes.timestamp.encode('foo')).to.throw(
+          'invalid timestamp',
+        );
+      });
+    });
+
+    describe('decode', function () {
+      it('should decode valid timestamp', function () {
+        expect(defaultTranscodes.timestamp.decode('1234567890123')).to.equal(
+          1234567890123,
+        );
+      });
+
+      it('should decode short timestamp', function () {
+        expect(defaultTranscodes.timestamp.decode('0000000123456')).to.equal(
+          123456,
+        );
+      });
+
+      it('should fail on long timestamp', function () {
+        expect(() =>
+          defaultTranscodes.timestamp.decode('12345678901234567'),
+        ).to.throw('invalid encoded timestamp');
+      });
+
+      it('should fail on invalid type', function () {
+        // @ts-expect-error invalid type
+        expect(() => defaultTranscodes.timestamp.decode(42)).to.throw(
+          'invalid encoded timestamp',
+        );
+      });
+    });
+  });
 });

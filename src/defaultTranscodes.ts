@@ -91,4 +91,18 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeMap> = {
       return value;
     },
   },
+  timestamp: {
+    encode: (value) => {
+      if (!isInt(value) || value < 0 || value > 9999999999999)
+        throw new Error('invalid timestamp');
+
+      return value.toString().padStart(13, '0');
+    },
+    decode: (value) => {
+      if (!isString(value) || !/^[0-9]{13}$/.test(value))
+        throw new Error('invalid encoded timestamp');
+
+      return Number(value);
+    },
+  },
 };
