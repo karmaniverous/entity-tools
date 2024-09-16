@@ -6,6 +6,8 @@ import type { Transcodes } from './Transcodes';
 /**
  * {@link Transcodes | `Transcodes`} for {@link DefaultTranscodeMap | `DefaultTranscodeMap`}.
  *
+ * See {@link https://github.com/karmaniverous/entity-tools/blob/main/src/defaultTranscodes.ts | implementation details}.
+ *
  * @category Transcoding
  */
 export const defaultTranscodes: Transcodes<DefaultTranscodeMap> = {
