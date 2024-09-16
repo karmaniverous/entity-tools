@@ -13,7 +13,7 @@ import type { TranscodeMap } from './TranscodeMap';
  *
  * Each `decode` function must take a `string` as an argument and return the mapped type.
  *
- * Encoded strings should be articulated such that they sort alphanumerically is the same order as the mapped type. Numerical values should therefore be encoded at a foxed length.
+ * Encoded strings should be articulated such that they sort alphanumerically in the same order as the mapped type. Numerical values should therefore be encoded at a foxed length.
  *
  * @example
  * ```
