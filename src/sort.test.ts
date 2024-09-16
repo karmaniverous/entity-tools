@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { omit } from 'radash';
 
+import type { Entity } from './Entity';
 import { sort } from './sort';
-import type { Entity } from './types';
 
 interface User extends Entity {
   id: number;

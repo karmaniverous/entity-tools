@@ -1,19 +1,8 @@
 import { isNumber, isString } from 'radash';
 
+import type { Entity } from './Entity';
 import { isNil } from './Nil';
-import type { Entity } from './types';
-
-/**
- * Specifies progressive sorting on properties of `Item`.
- *
- * @typeParam Item - Item type, must extend {@link Entity | `Entity`}.
- *
- * @category Sort
- */
-export type SortOrder<Item extends Entity> = {
-  property: keyof Item;
-  desc?: boolean;
-}[];
+import type { SortOrder } from './SortOrder';
 
 /**
  * Sort an array of `Item` progressively by `sort`.

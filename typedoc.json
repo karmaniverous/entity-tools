@@ -30,5 +30,6 @@
   },
   "searchInComments": true,
   "searchInDocuments": true,
-  "titleLink": "https://github.com/karmaniverous/entity-tools"
+  "titleLink": "https://github.com/karmaniverous/entity-tools",
+  "visibilityFilters": {}
 }
