@@ -1,3 +1,6 @@
+/**
+ * @module entity-tools
+ */
 export type { DefaultTranscodeMap } from './DefaultTranscodeMap';
 export { defaultTranscodes } from './defaultTranscodes';
 export type { Entity } from './Entity';
