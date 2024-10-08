@@ -6,6 +6,7 @@ export { defaultTranscodes } from './defaultTranscodes';
 export type { Entity } from './Entity';
 export type { Exactify } from './Exactify';
 export { isNil, type Nil } from './Nil';
+export type { PartialTranscodable } from './PartialTranscodable';
 export type { PropertiesNotOfType } from './PropertiesNotOfType';
 export type { PropertiesOfType } from './PropertiesOfType';
 export { sort } from './sort';
