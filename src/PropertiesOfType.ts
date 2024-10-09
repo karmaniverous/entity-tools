@@ -19,4 +19,5 @@ export type PropertiesOfType<E extends Entity, T> = keyof {
       : NonNullable<E[Property]> extends T
         ? Property
         : never]: never;
-};
+} &
+  string;

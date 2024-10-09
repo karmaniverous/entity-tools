@@ -19,4 +19,5 @@ export type PropertiesNotOfType<E extends Entity, T> = keyof {
         ? Property
         : never
       : never]: never;
-};
+} &
+  string;
