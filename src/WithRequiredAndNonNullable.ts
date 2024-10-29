@@ -3,6 +3,8 @@
  *
  * @typeParam T - The object type to modify.
  * @typeParam K - Union of keys of `T` to render required and non-nullable.
+ *
+ * @category Utilities
  */
 export type WithRequiredAndNonNullable<T, K extends keyof T> = T & {
   [P in K]-?: NonNullable<T[P]>;
