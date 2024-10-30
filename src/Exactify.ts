@@ -1,5 +1,5 @@
 /**
- * Strips the unspecified properties like `[x: string]: unknown` from `Record` types.
+ * Strips unspecified properties like `[x: string]: unknown` from `Record` types.
  *
  * @typeParam T - The `Record` type.
  *

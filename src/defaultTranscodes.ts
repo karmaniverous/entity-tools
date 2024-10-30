@@ -4,7 +4,7 @@ import type { DefaultTranscodeMap } from './DefaultTranscodeMap';
 import type { Transcodes } from './Transcodes';
 
 /**
- * {@link Transcodes | `Transcodes`} for {@link DefaultTranscodeMap | `DefaultTranscodeMap`}.
+ * A default set of {@link Transcodes | `Transcodes`} supporting {@link DefaultTranscodeMap | `DefaultTranscodeMap`}. These can be extended as needed by consuming applications.
  *
  * See {@link https://github.com/karmaniverous/entity-tools/blob/main/src/defaultTranscodes.ts | implementation details}.
  *

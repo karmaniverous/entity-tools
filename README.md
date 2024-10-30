@@ -6,7 +6,13 @@
 
 # Entity Tools
 
-This package provides common types & utility functions that support both the [`mock-db`](https://github.com/karmaniverous/mock-db) and [`entity-manager`](https://github.com/karmaniverous/entity-manager) packages.
+This package provides common types & utility functions that support both the following packages:
+
+- [**`entity-manager`**](https://github.com/karmaniverous/entity-manager) - Rational indexing & cross-shard querying at scale in your NoSQL database so you can focus on your application logic.
+
+- [**`entity-client-dynamodb`**](https://github.com/karmaniverous/entity-client-dynamodb) - Convenience wrapper for DynamoDB SDK with enhanced batch processing & EntityManager support.
+
+- [**`mock-db`**](https://github.com/karmaniverous/mock-db) - Mock DynamoDB-style query & scan behavior with local JSON data.
 
 ---
 

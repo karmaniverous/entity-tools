@@ -1,5 +1,5 @@
 /**
- * Relates transcode keys to the types transcoded.
+ * Relates transcodable property keys to the types transcoded.
  *
  * @example
  * ```

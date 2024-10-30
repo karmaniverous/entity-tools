@@ -1,5 +1,5 @@
 /**
- * The base Entity type. All Entities should extend this type.
+ * The base Entity type: string keys with an `unknown` value. All Entities should extend this type.
  *
  * @category Entities
  */

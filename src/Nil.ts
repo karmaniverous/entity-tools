@@ -1,5 +1,5 @@
 /**
- * Null or undefined.
+ * A `null` or `undefined` value.
  *
  * @category Utilities
  */

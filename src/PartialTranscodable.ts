@@ -5,6 +5,9 @@ import { TranscodeMap } from './TranscodeMap';
 /**
  * A partial {@link Entity | `Entity`} composed solely of properties that can be transcoded.
  *
+ * @typeParam Item - The {@link Entity | `Entity`} type to make partial.
+ * @typeParam T - The {@link TranscodeMap | `TranscodeMap`} map type indentifying transcodable properties.
+ *
  * @category Entities
  * @category Transcoding
  */
