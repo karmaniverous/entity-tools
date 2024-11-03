@@ -11,6 +11,20 @@ import type { Transcodes } from './Transcodes';
  * @category Transcoding
  */
 export const defaultTranscodes: Transcodes<DefaultTranscodeMap> = {
+  bigint: {
+    encode: (value) => {
+      if (typeof value !== 'bigint') throw new Error('invalid bigint');
+
+      return value.toString();
+    },
+    decode: (value) => {
+      try {
+        return BigInt(value);
+      } catch {
+        throw new Error('invalid encoded bigint');
+      }
+    },
+  },
   bigint20: {
     encode: (value) => {
       if (
@@ -35,13 +49,13 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeMap> = {
     encode: (value) => {
       if (typeof value !== 'boolean') throw new Error('invalid boolean');
 
-      return value.toString();
+      return value.toString()[0];
     },
     decode: (value) => {
-      if (!isString(value) || !/^(true|false)$/.test(value))
+      if (!isString(value) || !/^[tf]$/.test(value))
         throw new Error('invalid encoded boolean');
 
-      return value === 'true';
+      return value === 't';
     },
   },
   fix6: {
@@ -77,6 +91,20 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeMap> = {
         throw new Error('invalid encoded int');
 
       return (value.startsWith('n') ? -1 : 1) * Number(value.slice(1));
+    },
+  },
+  number: {
+    encode: (value) => {
+      if (typeof value !== 'number') throw new Error('invalid number');
+
+      return value.toString();
+    },
+    decode: (value) => {
+      const decode = Number(value);
+
+      if (isNaN(decode)) throw new Error('invalid encoded number');
+
+      return Number(value);
     },
   },
   string: {

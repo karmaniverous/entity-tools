@@ -3,6 +3,49 @@ import { expect } from 'chai';
 import { defaultTranscodes } from './defaultTranscodes';
 
 describe('defaultTranscodes', function () {
+  describe('bigint', function () {
+    describe('encode', function () {
+      it('should encode valid bigint', function () {
+        expect(defaultTranscodes.bigint.encode(12345678901234567890n)).to.equal(
+          '12345678901234567890',
+        );
+      });
+
+      it('should encode negative bigint', function () {
+        expect(defaultTranscodes.bigint.encode(-1234567890123456789n)).to.equal(
+          '-1234567890123456789',
+        );
+      });
+
+      it('should fail on invalid type', function () {
+        // @ts-expect-error invalid type
+        expect(() => defaultTranscodes.bigint.encode('foo')).to.throw(
+          'invalid bigint',
+        );
+      });
+    });
+
+    describe('decode', function () {
+      it('should decode valid bigint', function () {
+        expect(
+          defaultTranscodes.bigint.decode('12345678901234567890'),
+        ).to.equal(12345678901234567890n);
+      });
+
+      it('should decode negative bigint', function () {
+        expect(
+          defaultTranscodes.bigint.decode('-1234567890123456789'),
+        ).to.equal(-1234567890123456789n);
+      });
+
+      it('should fail on invalid type', function () {
+        expect(() => defaultTranscodes.bigint.decode('foo')).to.throw(
+          'invalid encoded bigint',
+        );
+      });
+    });
+  });
+
   describe('bigint20', function () {
     describe('encode', function () {
       it('should encode valid bigint20', function () {
@@ -74,7 +117,7 @@ describe('defaultTranscodes', function () {
   describe('boolean', function () {
     describe('encode', function () {
       it('should encode valid boolean', function () {
-        expect(defaultTranscodes.boolean.encode(true)).to.equal('true');
+        expect(defaultTranscodes.boolean.encode(true)).to.equal('t');
       });
 
       it('should fail on invalid type', function () {
@@ -87,7 +130,7 @@ describe('defaultTranscodes', function () {
 
     describe('decode', function () {
       it('should decode valid boolean', function () {
-        expect(defaultTranscodes.boolean.decode('true')).to.equal(true);
+        expect(defaultTranscodes.boolean.decode('t')).to.equal(true);
       });
 
       it('should fail on invalid boolean', function () {
@@ -236,6 +279,45 @@ describe('defaultTranscodes', function () {
         // @ts-expect-error invalid type
         expect(() => defaultTranscodes.int.decode(42)).to.throw(
           'invalid encoded int',
+        );
+      });
+    });
+  });
+
+  describe('number', function () {
+    describe('encode', function () {
+      it('should encode valid number', function () {
+        expect(defaultTranscodes.number.encode(12345678.90123456)).to.equal(
+          '12345678.90123456',
+        );
+      });
+
+      it('should encode negative number', function () {
+        expect(defaultTranscodes.number.encode(-123456)).to.equal('-123456');
+      });
+
+      it('should fail on invalid type', function () {
+        // @ts-expect-error invalid type
+        expect(() => defaultTranscodes.number.encode('foo')).to.throw(
+          'invalid number',
+        );
+      });
+    });
+
+    describe('decode', function () {
+      it('should decode valid number', function () {
+        expect(defaultTranscodes.number.decode('12345678.90123456')).to.equal(
+          12345678.90123456,
+        );
+      });
+
+      it('should decode negative number', function () {
+        expect(defaultTranscodes.number.decode('-123456')).to.equal(-123456);
+      });
+
+      it('should fail on invalid type', function () {
+        expect(() => defaultTranscodes.number.decode('foo')).to.throw(
+          'invalid encoded number',
         );
       });
     });
