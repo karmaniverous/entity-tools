@@ -1,4 +1,5 @@
 import { Entity } from './Entity';
+import { Exactify } from './Exactify';
 import { PropertiesOfType } from './PropertiesOfType';
 import { TranscodeMap } from './TranscodeMap';
 
@@ -14,4 +15,4 @@ import { TranscodeMap } from './TranscodeMap';
 export type PartialTranscodable<
   Item extends Entity,
   T extends TranscodeMap,
-> = Partial<Pick<Item, PropertiesOfType<Item, T[keyof T]>>>;
+> = Partial<Pick<Item, PropertiesOfType<Item, T[keyof Exactify<T>]>>>;

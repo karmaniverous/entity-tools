@@ -31,5 +31,7 @@
   "searchInComments": true,
   "searchInDocuments": true,
   "titleLink": "https://github.com/karmaniverous/entity-tools",
-  "visibilityFilters": {}
+  "visibilityFilters": {
+    "protected": false
+  }
 }

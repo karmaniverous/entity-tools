@@ -1,18 +1,23 @@
 import type { Entity } from './Entity';
+import type { EntityMap } from './EntityMap';
 import type { Exactify } from './Exactify';
+import type { FlattenEntityMap } from './FlattenEntityMap';
 import type { PropertiesOfType } from './PropertiesOfType';
 import type { TranscodeMap } from './TranscodeMap';
 
 /**
- * Returns the properties of {@link Entity | `Entity`} `E` whose types are covered by {@link TranscodeMap | `TranscodeMap`} `T`.
+ * Returns the properties of an {@link Entity | `Entity`} or {@link EntityMap | `EntityMap`} whose types are covered by {@link TranscodeMap | `TranscodeMap`} `T`.
  *
- * @typeParam E - The {@link Entity | `Entity`} type.
+ * @typeParam O - The {@link Entity | `Entity`} or {@link EntityMap | `EntityMap`} type.
  * @typeParam T - The {@link TranscodeMap | `TranscodeMap`}.
  *
  * @category Transcoding
  * @category Entities
  */
 export type TranscodableProperties<
-  E extends Entity,
+  O extends EntityMap | Entity,
   T extends TranscodeMap,
-> = PropertiesOfType<E, T[keyof Exactify<T>]>;
+> = PropertiesOfType<
+  O extends EntityMap ? FlattenEntityMap<O> : O,
+  T[keyof Exactify<T>]
+>;

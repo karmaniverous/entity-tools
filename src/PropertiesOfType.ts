@@ -1,23 +1,19 @@
-import type { Entity } from './Entity';
-import type { Exactify } from './Exactify';
-
 /**
- * Returns the properties of {@link Entity | `Entity`} `E` of types that extend type `T`. Ignores `undefined` types.
+ * Returns the properties of `object` `O` with types that extend type `T`. Ignores `undefined` types.
  *
- * @typeParam E - The {@link Entity | `Entity`} type.
+ * @typeParam O - The `object` type.
  * @typeParam T - The type to filter by.
  *
- * @category Entities
+ * @category Utilities
  */
-export type PropertiesOfType<E extends Entity, T> = keyof {
-  [Property in keyof Exactify<E> as [T] extends [never]
-    ? [NonNullable<E[Property]>] extends [never]
+export type PropertiesOfType<O extends object, T> = keyof {
+  [Property in keyof O as [T] extends [never]
+    ? [NonNullable<O[Property]>] extends [never]
       ? Property
       : never
-    : [NonNullable<E[Property]>] extends [never]
+    : [NonNullable<O[Property]>] extends [never]
       ? never
-      : NonNullable<E[Property]> extends T
+      : NonNullable<O[Property]> extends T
         ? Property
         : never]: never;
-} &
-  string;
+};
