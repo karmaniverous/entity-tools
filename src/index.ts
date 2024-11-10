@@ -15,6 +15,7 @@ export type {
 export type { MakeOptional } from './MakeOptional';
 export type { AllDisjoint, MutuallyExclusive } from './MutuallyExclusive';
 export { isNil, type Nil } from './Nil';
+export type { NotNever } from './NotNever';
 export type { PartialTranscodable } from './PartialTranscodable';
 export type { PropertiesNotOfType } from './PropertiesNotOfType';
 export type { PropertiesOfType } from './PropertiesOfType';
