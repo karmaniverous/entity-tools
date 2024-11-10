@@ -20,4 +20,5 @@ export type TranscodableProperties<
 > = PropertiesOfType<
   O extends EntityMap ? FlattenEntityMap<O> : O,
   T[keyof Exactify<T>]
->;
+> &
+  string;
