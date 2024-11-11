@@ -1,4 +1,4 @@
-import { Entity } from './Entity';
+import type { Entity } from './Entity';
 
 /**
  * The base EntityMap type. All EntityMaps should extend this type.

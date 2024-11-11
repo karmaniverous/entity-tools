@@ -1,7 +1,7 @@
-import { Entity } from './Entity';
-import { Exactify } from './Exactify';
-import { PropertiesOfType } from './PropertiesOfType';
-import { TranscodeMap } from './TranscodeMap';
+import type { Entity } from './Entity';
+import type { Exactify } from './Exactify';
+import type { PropertiesOfType } from './PropertiesOfType';
+import type { TranscodeMap } from './TranscodeMap';
 
 /**
  * A partial {@link Entity | `Entity`} composed solely of properties that can be transcoded.

@@ -1,6 +1,6 @@
-import { Entity } from './Entity';
-import { EntityMap } from './EntityMap';
-import { Exactify } from './Exactify';
+import type { Entity } from './Entity';
+import type { EntityMap } from './EntityMap';
+import type { Exactify } from './Exactify';
 
 /**
  * Returns the keys of an {@link Entity | `Entity`} type.

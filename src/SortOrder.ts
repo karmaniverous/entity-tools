@@ -1,5 +1,5 @@
 import type { Entity } from './Entity';
-import { Exactify } from './Exactify';
+import type { Exactify } from './Exactify';
 
 /**
  * Specifies progressive sorting on properties of an {@link Entity | `Entity`} type.

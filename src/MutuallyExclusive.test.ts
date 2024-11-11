@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { MutuallyExclusive } from './MutuallyExclusive';
+import type { MutuallyExclusive } from './MutuallyExclusive';
 
 type HappyPath =
   MutuallyExclusive<['a', 'b' | 'c', 'd']> extends true ? true : never;

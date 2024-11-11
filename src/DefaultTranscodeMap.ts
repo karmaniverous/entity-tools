@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { defaultTranscodes } from './defaultTranscodes';
-import { TranscodeMap } from './TranscodeMap';
+import type { TranscodeMap } from './TranscodeMap';
 
 /**
  * Default {@link TranscodeMap | `TranscodeMap`} supporting {@link defaultTranscodes | `defaultTranscodes`}.
