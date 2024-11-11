@@ -5,7 +5,7 @@
  * @typeParam C - The condition to check.
  * @typeParam O - The type of the property.
  *
- * @type Utilities
+ * @category Utilities
  */
 export type ConditionalProperty<K extends PropertyKey, C, O extends object> = [
   C,

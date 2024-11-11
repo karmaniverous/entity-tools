@@ -8,7 +8,7 @@
  *
  * @returns The conditionalized function with the same signature as `fn`.
  *
- * @type Utilities
+ * @category Utilities
  */
 export function conditionalize<
   F extends (...args: Parameters<F>) => ReturnType<F>,
