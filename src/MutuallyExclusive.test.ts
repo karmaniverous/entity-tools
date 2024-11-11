@@ -20,7 +20,7 @@ const testStringCollision: StringCollision = true;
 type MultipleStringCollision =
   MutuallyExclusive<[string, string]> extends true ? true : never;
 // @ts-expect-error
-const testStringCollision: StringCollision = true;
+const testMultipleStringCollision: StringCollision = true;
 
 type NeverSupport =
   MutuallyExclusive<['a', 'b' | 'c', never]> extends true ? true : never;
