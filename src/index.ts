@@ -1,6 +1,8 @@
 /**
  * @module entity-tools
  */
+export type { conditionalize } from './conditionalize';
+export type { ConditionalProperty } from './ConditionalProperty';
 export type { DefaultTranscodeMap } from './DefaultTranscodeMap';
 export { defaultTranscodes } from './defaultTranscodes';
 export type { Entity } from './Entity';
