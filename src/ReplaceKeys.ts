@@ -3,6 +3,8 @@
  *
  * @typeParam T - The object type to modify.
  * @typeParam R - The source of replacement keys.
+ *
+ * @category Utilities
  */
 export type ReplaceKeys<T extends object, R extends object> = Omit<
   T,
