@@ -6,5 +6,6 @@
  *
  * @category Utilities
  */
-export type MakeOptional<T, U extends keyof T> = Omit<T, U> &
-  Partial<Pick<T, U>>;
+export type MakeOptional<T extends object, U extends keyof T> = {
+  [P in keyof T]: P extends U ? T[P] | undefined : T[P];
+};
