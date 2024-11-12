@@ -1,6 +1,6 @@
 /**
- * The base Entity type: string keys with an `unknown` value. All Entities should extend this type.
+ * The base Entity type.
  *
  * @category Entities
  */
-export type Entity = Record<string, unknown>;
+export type Entity = object;

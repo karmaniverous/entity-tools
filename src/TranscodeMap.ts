@@ -14,4 +14,4 @@
  *
  * @category Transcoding
  */
-export type TranscodeMap = Record<string, unknown>;
+export type TranscodeMap = object;
