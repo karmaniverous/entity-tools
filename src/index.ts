@@ -20,6 +20,8 @@ export { isNil, type Nil } from './Nil';
 export type { NotNever } from './NotNever';
 export type { PropertiesNotOfType } from './PropertiesNotOfType';
 export type { PropertiesOfType } from './PropertiesOfType';
+export type { ReplaceKey } from './ReplaceKey';
+export type { ReplaceKeys } from './ReplaceKeys';
 export { sort } from './sort';
 export type { SortOrder } from './SortOrder';
 export type { TranscodableProperties } from './TranscodableProperties';
