@@ -13,6 +13,7 @@
     "tsx",
     "typescript"
   ],
+  "hostedBaseUrl": "https://docs.karmanivero.us/entity-tools",
   "navigation": {
     "includeCategories": true
   },
