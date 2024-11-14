@@ -2,130 +2,134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/modules.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/index.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/documents/CHANGELOG.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/modules/entity_tools.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/interfaces/entity_tools.DefaultTranscodeMap.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.AllDisjoint.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.ConditionalProperty.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.Entity.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.EntityKeys.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.EntityMap.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.EntityMapValues.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.EntityValue.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.Exactify.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.FlattenEntityMap.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.MakeOptional.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
+	</url>
+	<url>
+		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.MakeRequired.html</loc>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.MutuallyExclusive.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.Nil.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.NotNever.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.PropertiesNotOfType.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.PropertiesOfType.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.ReplaceKey.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.ReplaceKeys.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.SortOrder.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.TranscodableProperties.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.TranscodeMap.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.Transcodes.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.UntranscodableProperties.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity_tools.WithRequiredAndNonNullable.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/variables/entity_tools.defaultTranscodes.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity_tools.conditionalize.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity_tools.isNil.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity_tools.sort.html</loc>
-		<lastmod>2024-11-14T03:02:24.364Z</lastmod>
+		<lastmod>2024-11-14T07:27:24.338Z</lastmod>
 	</url>
 </urlset>
