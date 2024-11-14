@@ -126,7 +126,7 @@
   },
   "type": "module",
   "types": "dist/index.d.ts",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "dependencies": {
     "radash": "^12.1.0"
   }
