@@ -6,7 +6,7 @@
  *
  * @category Utilities
  */
-export type MakeUpdatable<T extends object, U extends keyof T> = {
+export type MakeUpdatable<T extends object, U extends keyof T = never> = {
   [P in keyof T as P extends U ? never : P]+?: undefined extends T[P]
     ? T[P] | null
     : T[P];

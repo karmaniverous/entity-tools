@@ -30,4 +30,5 @@ export type { TranscodableProperties } from './TranscodableProperties';
 export type { TranscodeMap } from './TranscodeMap';
 export type { Transcodes } from './Transcodes';
 export type { UntranscodableProperties } from './UntranscodableProperties';
+export { updateRecord } from './updateRecord';
 export type { WithRequiredAndNonNullable } from './WithRequiredAndNonNullable';
