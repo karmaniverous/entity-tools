@@ -1,5 +1,5 @@
 /**
- * Makes specified properties of T required.
+ * Makes specified properties of `T` required.
  *
  * @typeParam T - The type to make properties required.
  * @typeParam U - The properties to make required.

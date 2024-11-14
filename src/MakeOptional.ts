@@ -1,5 +1,5 @@
 /**
- * Makes specified properties of T optional.
+ * Makes specified properties of `T` optional.
  *
  * @typeParam T - The type to make properties optional.
  * @typeParam U - The properties to make optional.
