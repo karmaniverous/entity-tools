@@ -1,5 +1,5 @@
-import { expect } from 'chai';
 import { omit } from 'radash';
+import { expect } from 'vitest';
 
 import type { Entity } from './Entity';
 import { sort } from './sort';
