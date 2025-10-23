@@ -39,4 +39,8 @@
       type-checked rules for test files using typescript-eslint
       disableTypeChecked config. This resolves errors such as
       "@typescript-eslint/await-thenable requires type information" when
-      linting tests without parserOptions.project.
+      linting tests without parserOptions.project.
+    - Removed reliance on typescript-eslint disableTypeChecked preset (not
+      iterable in this setup). Instead, explicitly ignored src/**/*.test.ts
+      within the typed config block and kept an untyped test override with
+      Vitest globals.

@@ -37,6 +37,7 @@ export default [
   // Main, typed config for sources
   {
     files: ['src/**/*.ts'],
+    ignores: ['src/**/*.test.ts'],
     languageOptions: {
       // Important: set the TS parser here, otherwise this block replaces
       // the parser from strictTypeChecked and ESLint falls back to espree.
@@ -70,11 +71,6 @@ export default [
       'tsdoc/syntax': 'warn',
     },
   },
-  // Disable typed rules for tests (avoid requiring parserOptions.project)
-  ...((tseslint.configs.disableTypeChecked ?? []).map((c) => ({
-    ...c,
-    files: ['src/**/*.test.ts'],
-  })) as unknown as object[]),
   // Test files: untyped lint and Vitest globals
   {
     files: ['src/**/*.test.ts'],
