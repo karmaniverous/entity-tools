@@ -18,12 +18,14 @@
     "@types/eslint-plugin-mocha": "^10.4.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.9.1",
+    "@vitest/coverage-v8": "^2.1.2",
     "auto-changelog": "^2.5.0",
     "chai": "^6.2.0",
     "cross-env": "^10.1.0",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-mocha": "^11.2.0",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-tsdoc": "^0.4.0",
     "jsdom-global": "^3.0.2",
@@ -45,11 +47,11 @@
     "typedoc-plugin-replace-text": "^4.2.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
-    "vitest": "^2.1.2",
-    "@vitest/coverage-v8": "^2.1.2"
+    "vitest": "^2.1.2"
   },
   "exports": {
-    ".": {      "import": {
+    ".": {
+      "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/mjs/index.js"
       },
@@ -127,7 +129,8 @@
     "test": "dotenvx run --quiet --log-level=LOG_LEVEL=debug -- vitest run --coverage",
     "typecheck": "tsc"
   },
-  "type": "module",  "types": "dist/index.d.ts",
+  "type": "module",
+  "types": "dist/index.d.ts",
   "version": "0.6.8",
   "dependencies": {
     "radash": "^12.1.1"

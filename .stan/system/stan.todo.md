@@ -29,4 +29,9 @@
     - eslint.config.js: added test-file override to declare vitest globals and
       disable type-info-heavy unsafe rules that are noisy in tests.
     - rollup.config.ts: replaced JSON import assertion with createRequire to fix
-      “Unexpected identifier 'assert'” when loading the config.
+      “Unexpected identifier 'assert'” when loading the config.
+  - Migrated ESLint to a flat, type-aware TypeScript config.
+    - Created eslint.config.ts with strict typed lint for sources, Prettier
+      integration, import sorting, and TSDoc syntax checks.
+    - Added untyped override and Vitest globals for *.test.ts to avoid TSConfig
+      inclusion errors during lint runs. Removed eslint.config.js.
