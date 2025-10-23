@@ -9,6 +9,12 @@ import { fileURLToPath } from 'url';
 
 const tsconfigRootDir = dirname(fileURLToPath(import.meta.url));
 
+// Limit type-aware configs to source files only
+const strictTypeCheckedForSrc = tseslint.configs.strictTypeChecked.map((c) => ({
+  ...c,
+  files: ['src/**/*.ts'],
+}));
+
 export default [
   // Ignore generated/build artifacts and STAN workspace
   {
@@ -25,11 +31,12 @@ export default [
     ],
   },
   eslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
+  ...strictTypeCheckedForSrc,
   // Defer formatting concerns to Prettier
   prettierConfig,
-  // Main, typed config
+  // Main, typed config for sources
   {
+    files: ['src/**/*.ts'],
     languageOptions: {
       // Important: set the TS parser here, otherwise this block replaces
       // the parser from strictTypeChecked and ESLint falls back to espree.
@@ -63,9 +70,14 @@ export default [
       'tsdoc/syntax': 'warn',
     },
   },
-  // Test files: disable typed lint and declare Vitest globals
+  // Disable typed rules for tests (avoid requiring parserOptions.project)
+  ...((tseslint.configs.disableTypeChecked ?? []).map((c) => ({
+    ...c,
+    files: ['src/**/*.test.ts'],
+  })) as unknown as object[]),
+  // Test files: untyped lint and Vitest globals
   {
-    files: ['**/*.test.ts'],
+    files: ['src/**/*.test.ts'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {

@@ -34,4 +34,9 @@
     - Created eslint.config.ts with strict typed lint for sources, Prettier
       integration, import sorting, and TSDoc syntax checks.
     - Added untyped override and Vitest globals for *.test.ts to avoid TSConfig
-      inclusion errors during lint runs. Removed eslint.config.js.
+      inclusion errors during lint runs. Removed eslint.config.js.
+    - Scoped type-aware ESLint rules to src/**/*.ts only and disabled
+      type-checked rules for test files using typescript-eslint
+      disableTypeChecked config. This resolves errors such as
+      "@typescript-eslint/await-thenable requires type information" when
+      linting tests without parserOptions.project.
