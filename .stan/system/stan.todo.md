@@ -50,4 +50,11 @@
       globals override for tests without disabling rules.
     - Updated tsconfig.json to include tests and provide Vitest globals
       (types: ["node", "vitest/globals"]) so typed lint has full type
-      information across test files.
+      information across test files.
+  - Resolve typecheck/docs duplicates from Chai types with Vitest:
+    - Removed @types/chai and chai from devDependencies to avoid conflicts with
+      Vitest’s bundled Chai typings.
+  - Prevent Vitest from attempting to run type-only checks as runtime tests:
+    - Renamed src/MutuallyExclusive.test.ts (type-level assertions only) to
+      src/MutuallyExclusive.types.ts so it remains type-checked and linted but
+      is not collected as a Vitest runtime suite.
