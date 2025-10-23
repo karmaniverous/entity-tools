@@ -33,4 +33,19 @@ export default tseslint.config(
       'tsdoc/syntax': 'warn',
     },
   },
+  // Test files: declare vitest globals and relax unsafe rules (type-info heavy)
+  {
+    files: ['**/*.test.ts'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+    },
+  },
 );

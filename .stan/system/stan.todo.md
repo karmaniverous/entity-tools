@@ -23,3 +23,10 @@
     Prettier, TS-ESLint, TSDoc, and import sorting.
   - Updated tests to import expect from vitest; removed Mocha/NYC configs and
     updated VS Code recommendations/settings.
+  - Refined toolchain to stabilize after Vitest migration:
+    - tsconfig.json: removed global Vitest types and excluded *.test.ts from the
+      main TS program so tsc/typedoc/build don’t require Vitest types.
+    - eslint.config.js: added test-file override to declare vitest globals and
+      disable type-info-heavy unsafe rules that are noisy in tests.
+    - rollup.config.ts: replaced JSON import assertion with createRequire to fix
+      “Unexpected identifier 'assert'” when loading the config.

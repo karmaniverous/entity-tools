@@ -5,8 +5,11 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescriptPlugin from '@rollup/plugin-typescript';
 import type { InputOptions, RollupOptions } from 'rollup';
 import dtsPlugin from 'rollup-plugin-dts';
+import { createRequire } from 'node:module';
 
-import pkg from './package.json' assert { type: 'json' };
+const require = createRequire(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const pkg = require('./package.json');
 
 const outputPath = `dist`;
 
