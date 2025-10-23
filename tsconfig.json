@@ -13,8 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "strict": true,
-    "types": ["node"]
+    "types": ["node", "vitest/globals"]
   },
-  "exclude": ["coverage", "dist", "docs", "node_modules", "src/**/*.test.ts"],
+  "exclude": ["coverage", "dist", "docs", "node_modules"],
   "include": ["src/**/*.ts"]
 }

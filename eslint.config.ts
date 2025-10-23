@@ -9,10 +9,10 @@ import { fileURLToPath } from 'url';
 
 const tsconfigRootDir = dirname(fileURLToPath(import.meta.url));
 
-// Limit type-aware configs to source files only
-const strictTypeCheckedForSrc = tseslint.configs.strictTypeChecked.map((c) => ({
+// Apply type-aware configs to all TS files (sources and tests)
+const strictTypeCheckedAll = tseslint.configs.strictTypeChecked.map((c) => ({
   ...c,
-  files: ['src/**/*.ts'],
+  files: ['**/*.ts'],
 }));
 
 export default [
@@ -31,19 +31,19 @@ export default [
     ],
   },
   eslint.configs.recommended,
-  ...strictTypeCheckedForSrc,
+  ...strictTypeCheckedAll,
   // Defer formatting concerns to Prettier
   prettierConfig,
-  // Main, typed config for sources
+  // Main, typed config for all TS
   {
-    files: ['src/**/*.ts'],
-    ignores: ['src/**/*.test.ts'],
+    files: ['**/*.ts'],
     languageOptions: {
       // Important: set the TS parser here, otherwise this block replaces
       // the parser from strictTypeChecked and ESLint falls back to espree.
       parser: tseslint.parser,
       parserOptions: {
-        // Be explicit so the CLI loads type info from the root project.
+        // Use the root project for type info; no dedicated ESLint tsconfig.
+        // Setting project explicitly keeps resolution predictable.
         project: ['./tsconfig.json'],
         tsconfigRootDir,
       },
@@ -71,28 +71,17 @@ export default [
       'tsdoc/syntax': 'warn',
     },
   },
-  // Test files: untyped lint and Vitest globals
+  // Test files: keep Vitest globals; typed rules still apply via the main config
   {
-    files: ['src/**/*.test.ts'],
+    files: ['**/*.test.ts'],
     languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        // Keep tests out of the typed program (root tsconfig excludes them)
-        project: null,
-        tsconfigRootDir,
-      },
       globals: {
         describe: 'readonly',
         it: 'readonly',
         expect: 'readonly',
       },
     },
-    rules: {
-      '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/no-unsafe-member-access': 'off',
-      '@typescript-eslint/no-unsafe-return': 'off',
-      '@typescript-eslint/no-unsafe-call': 'off',
-    },
+    // No rule downgrades; tests are fully type-checked
   },
 ];
 

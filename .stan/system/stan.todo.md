@@ -43,4 +43,11 @@
     - Removed reliance on typescript-eslint disableTypeChecked preset (not
       iterable in this setup). Instead, explicitly ignored src/**/*.test.ts
       within the typed config block and kept an untyped test override with
-      Vitest globals.
+      Vitest globals.
+  - Enforce typed ESLint rules for all TS files (tests included).
+    - Updated eslint.config.ts to apply strictTypeChecked to **/*.ts and use the
+      root tsconfig.json (no dedicated ESLint tsconfig). Kept only Vitest
+      globals override for tests without disabling rules.
+    - Updated tsconfig.json to include tests and provide Vitest globals
+      (types: ["node", "vitest/globals"]) so typed lint has full type
+      information across test files.
