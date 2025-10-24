@@ -108,3 +108,7 @@
       type assertions from runtime tests.
   - STAN build: ignore rollup plugin typescript defaulting warning
     - Simplified build warnPattern to match the exact message so it is ignored reliably.
+
+  - Knip: ignore tsd type tests
+    - Updated knip.json to ignore tests/types/** so type tests consumed by the
+      tsd CLI are not reported as unused files.
