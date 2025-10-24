@@ -113,7 +113,7 @@
     "release": "dotenvx run -f .env.local -- release-it",
     "release:pre": "dotenvx run -f .env.local -- release-it --no-git.requireBranch --github.prerelease --preRelease",
     "test": "dotenvx run --quiet --log-level=LOG_LEVEL=debug -- vitest run --coverage",
-    "typecheck": "tsc && tsd"
+    "typecheck": "tsc && tsd tests/types"
   },
   "type": "module",
   "types": "dist/index.d.ts",

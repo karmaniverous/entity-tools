@@ -2,10 +2,12 @@
 
 ## Next up
 
-- Lint polish (optional): consider adding eslint-plugin-vitest if we want
-  additional test-rule coverage; for now mocha plugin has been removed.
-- DevDeps hygiene (optional): remove leftover Mocha/NYC packages after the
-  migration stabilizes across CI.
+- CI: ensure tsd runs in CI (typecheck runs "tsc && tsd tests/types"); consider
+  a single "ci:test" script combining lint, typecheck, test, build.
+- Lint polish (optional): consider adding eslint-plugin-vitest for richer
+  test-rule coverage.
+- Optional: remove @rollup/plugin-alias if alias entries remain unused; the
+  typed empty array is harmless.
 
 ## Completed (recent)
 
@@ -125,4 +127,9 @@
       target the error branch and not the union (fixes TS2345).
     - vitest.config.ts: removed coverage option "all" (not supported in Vitest v4).
     - tsconfig.json: excluded tests/** so build/docs/tsc do not compile tsd
-      type tests (tsd runs them separately).
+      type tests (tsd runs them separately).
+  - Typecheck: ensure tsd runs by invoking tests in tests/types.
+    - Updated npm script "typecheck" to
+      "tsc && tsd tests/types" so the tsd CLI targets the configured type
+      tests directory and does not look for dist/index.test-d.ts. This should
+      pass locally and in CI.
