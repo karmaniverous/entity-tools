@@ -117,7 +117,7 @@
     "url": "git+https://github.com/karmaniverous/entity-tools.git"
   },
   "scripts": {
-    "build": "rimraf dist && rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build": "rimraf dist && rollup --config rollup.config.ts --configPlugin typescript",
     "docs": "typedoc",
     "knip": "knip",
     "lint": "eslint src/** && prettier -c src",
@@ -134,3 +134,4 @@
     "radash": "^12.1.1"
   }
 }
+

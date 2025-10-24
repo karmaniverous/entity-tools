@@ -62,4 +62,8 @@
     - Updated rollup.config.ts to load package.json via createRequire instead of
       `assert { type: 'json' }`, resolving “Unexpected identifier 'assert'”.
     - Flattened DTS plugin config to avoid nested arrays:
-      `plugins: [...(commonInputOptions.plugins ?? []), dtsPlugin()]`.
+      `plugins: [...(commonInputOptions.plugins ?? []), dtsPlugin()]`.
+  - Build: ensure Rollup applies TypeScript to rollup.config.ts
+    - Updated package.json build script to use `--configPlugin typescript`
+      (recognized plugin name for @rollup/plugin-typescript), so the config in
+      TypeScript is compiled and parsed correctly.
