@@ -8,8 +8,13 @@ import typescriptPlugin from '@rollup/plugin-typescript';
 import dtsPlugin from 'rollup-plugin-dts';
 
 const require = createRequire(import.meta.url);
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const pkg = require('./package.json');
+// package.json shape (deps only)
+type Pkg = {
+  dependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
+};
+
+const pkgJson = require('./package.json') as Pkg;
 
 const outputPath = `dist`;
 
@@ -20,15 +25,15 @@ const commonPlugins = [
   typescriptPlugin(),
 ];
 
-// Alias entries for '@rollup/plugin-alias'
-type RollupAliasEntry = { find: string | RegExp; replacement: string };
-const commonAliases: RollupAliasEntry[] = [];
+// Alias entries for '@rollup/plugin-alias'.
+type AliasEntry = { find: string | RegExp; replacement: string };
+const commonAliases: AliasEntry[] = [];
 
 const commonInputOptions = {
   input: 'src/index.ts',
   external: [
-    ...Object.keys(pkg?.dependencies ?? {}),
-    ...Object.keys(pkg?.peerDependencies ?? {}),
+    ...Object.keys(pkgJson.dependencies ?? {}),
+    ...Object.keys(pkgJson.peerDependencies ?? {}),
     'tslib',
   ],
   plugins: [aliasPlugin({ entries: commonAliases }), ...commonPlugins],
@@ -64,7 +69,7 @@ const config = [
   // Type definitions output.
   {
     ...commonInputOptions,
-    plugins: [...(commonInputOptions.plugins ?? []), dtsPlugin()],
+    plugins: [...commonInputOptions.plugins, dtsPlugin()],
     output: [
       {
         extend: true,

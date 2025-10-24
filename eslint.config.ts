@@ -19,15 +19,14 @@ export default [
   // Ignore generated/build artifacts and STAN workspace
   {
     ignores: [
-      '.serverless/**',
       '.stan/**',
+      '.rollup.cache/**',
       '**/.tsbuild/**',
-      '**/generated/**',
       'coverage/**',
       'dist/**',
       'docs/**',
-      'templates/**',
       'node_modules/**',
+      'tests/**/*.test-d.ts',
     ],
   },
   eslint.configs.recommended,
