@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import vitestPlugin from '@vitest/eslint-plugin';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
@@ -80,6 +81,12 @@ export default [
         expect: 'readonly',
       },
     },
-    // No rule downgrades; tests are fully type-checked
+    plugins: {
+      vitest: vitestPlugin,
+    },
+    rules: {
+      // Apply Vitest's recommended rules for test files
+      ...(vitestPlugin.configs.recommended.rules as Record<string, unknown>),
+    },
   },
 ];
