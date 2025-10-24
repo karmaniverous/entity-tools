@@ -66,4 +66,8 @@
   - Build: ensure Rollup applies TypeScript to rollup.config.ts
     - Updated package.json build script to use `--configPlugin typescript`
       (recognized plugin name for @rollup/plugin-typescript), so the config in
-      TypeScript is compiled and parsed correctly.
+      TypeScript is compiled and parsed correctly.
+  - Build: keep Rollup config in TypeScript per template
+    - Switched build script to `--configPlugin @rollup/plugin-typescript` so the
+      TS config is compiled reliably (aligns with template repo). No migration
+      away from TS config.
