@@ -2,17 +2,15 @@
 
 ## Next up
 
-- Build: investigate rollup build failure "Unexpected identifier 'assert'"
-  reported from rollup.config.ts JSON import assertion. Evaluate Rollup/Node
-  versions or plugin options; adjust config as needed.
 - Lint polish (optional): consider adding eslint-plugin-vitest if we want
   additional test-rule coverage; for now mocha plugin has been removed.
 - DevDeps hygiene (optional): remove leftover Mocha/NYC packages after the
   migration stabilizes across CI.
+- knip config (optional): ignore dev tools invoked outside code (e.g., cross-env
+  via stan.config.yml, auto-changelog via release-it hooks) to avoid false positives.
 
 ## Completed (recent)
-
-- Migrate tests from Mocha/NYC to Vitest.
+- Migrate tests from Mocha/NYC to Vitest.
   - Added vitest and @vitest/coverage-v8 devDependencies.
   - Created vitest.config.ts with Node env, globals, and V8 coverage reporters.
   - Switched npm "test" script to run Vitest with coverage under dotenvx.
@@ -82,4 +80,7 @@
       @types/eslint__js, @types/eslint-config-prettier, @types/eslint-plugin-mocha,
       @types/mocha, eslint-plugin-mocha, jsdom-global, mocha, nyc,
       source-map-support, ts-node, tsd.
-    - Updated package keywords: drop mocha/nyc/chai; add vitest.
+    - Updated package keywords: drop mocha/nyc/chai; add vitest.
+  - Build: confirmed template-aligned TS Rollup config builds cleanly with
+    `@rollup/plugin-typescript` on rollup.config.ts; removing the “Next up” build
+    investigation item.
