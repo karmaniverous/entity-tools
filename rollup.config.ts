@@ -64,7 +64,7 @@ const config: RollupOptions[] = [
   // Type definitions output.
   {
     ...commonInputOptions,
-    plugins: [commonInputOptions.plugins, dtsPlugin()],
+    plugins: [...(commonInputOptions.plugins ?? []), dtsPlugin()],
     output: [
       {
         extend: true,
@@ -76,3 +76,4 @@ const config: RollupOptions[] = [
 ];
 
 export default config;
+

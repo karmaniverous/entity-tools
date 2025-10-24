@@ -57,4 +57,9 @@
   - Prevent Vitest from attempting to run type-only checks as runtime tests:
     - Renamed src/MutuallyExclusive.test.ts (type-level assertions only) to
       src/MutuallyExclusive.types.ts so it remains type-checked and linted but
-      is not collected as a Vitest runtime suite.
+      is not collected as a Vitest runtime suite.
+  - Build: fixed Rollup config to avoid JSON import assertions.
+    - Updated rollup.config.ts to load package.json via createRequire instead of
+      `assert { type: 'json' }`, resolving “Unexpected identifier 'assert'”.
+    - Flattened DTS plugin config to avoid nested arrays:
+      `plugins: [...(commonInputOptions.plugins ?? []), dtsPlugin()]`.
