@@ -3,8 +3,8 @@ import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
 import tsDocPlugin from 'eslint-plugin-tsdoc';
-import tseslint from 'typescript-eslint';
 import { dirname } from 'path';
+import tseslint from 'typescript-eslint';
 import { fileURLToPath } from 'url';
 
 const tsconfigRootDir = dirname(fileURLToPath(import.meta.url));
@@ -84,4 +84,3 @@ export default [
     // No rule downgrades; tests are fully type-checked
   },
 ];
-

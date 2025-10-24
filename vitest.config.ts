@@ -13,7 +13,6 @@ export default defineConfig({
       reporter: ['html', 'lcov', 'text', 'text-summary'],
       reportsDirectory: 'coverage',
       // Limit coverage scope to sources
-      all: true,
       include: ['src/**/*.{ts,tsx}'],
     },
   },

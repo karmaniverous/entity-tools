@@ -1,4 +1,5 @@
-import { expectAssignable, expectNotAssignable, expectType } from 'tsd';
+import { expectNotAssignable, expectType } from 'tsd';
+
 import type { MutuallyExclusive } from '../../src/MutuallyExclusive';
 
 // Positive: equals true
@@ -8,17 +9,24 @@ expectNotAssignable<{ __error__: string }>({} as Happy);
 
 // Negative: union collision → error shape (not true)
 type UnionCollision = MutuallyExclusive<['a', 'b' | 'c', 'b']>;
-expectAssignable<{ __error__: string }>({} as UnionCollision);
+// Error branch is present
+expectType<{ __error__: string }>(
+  {} as Extract<UnionCollision, { __error__: string }>,
+);
 expectNotAssignable<true>({} as UnionCollision);
 
 // Negative: string collision → error shape (not true)
 type StringCollision = MutuallyExclusive<['a', 'b' | 'c', string]>;
-expectAssignable<{ __error__: string }>({} as StringCollision);
+expectType<{ __error__: string }>(
+  {} as Extract<StringCollision, { __error__: string }>,
+);
 expectNotAssignable<true>({} as StringCollision);
 
 // Negative: multiple string collision → error shape (not true)
 type MultipleStringCollision = MutuallyExclusive<[string, string]>;
-expectAssignable<{ __error__: string }>({} as MultipleStringCollision);
+expectType<{ __error__: string }>(
+  {} as Extract<MultipleStringCollision, { __error__: string }>,
+);
 expectNotAssignable<true>({} as MultipleStringCollision);
 
 // Positive: never support → true

@@ -116,4 +116,13 @@
   - STAN build warnPattern: match other warnings, ignore defaulting notice
     - Updated warnPattern to select Rollup warning lines that start with "(!) "
       while excluding the specific "@rollup/plugin-typescript: outputToFile[Ss]ystem option is defaulting to true"
-      message. This surfaces real warnings and suppresses the benign notice.
+      message. This surfaces real warnings and suppresses the benign notice.
+
+  - Type fixes after widening tsconfig include:
+    - rollup.config.ts: typed alias entries (no implicit any) with a local
+      RollupAliasEntry type; kept config TS and template-aligned.
+    - tsd tests: narrowed union error assertions using Extract so assertions
+      target the error branch and not the union (fixes TS2345).
+    - vitest.config.ts: removed coverage option "all" (not supported in Vitest v4).
+    - tsconfig.json: excluded tests/** so build/docs/tsc do not compile tsd
+      type tests (tsd runs them separately).

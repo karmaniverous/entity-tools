@@ -1,10 +1,11 @@
+import { createRequire } from 'node:module';
+
 import aliasPlugin from '@rollup/plugin-alias';
 import commonjsPlugin from '@rollup/plugin-commonjs';
 import jsonPlugin from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescriptPlugin from '@rollup/plugin-typescript';
 import dtsPlugin from 'rollup-plugin-dts';
-import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -19,7 +20,9 @@ const commonPlugins = [
   typescriptPlugin(),
 ];
 
-const commonAliases = [];
+// Alias entries for '@rollup/plugin-alias'
+type RollupAliasEntry = { find: string | RegExp; replacement: string };
+const commonAliases: RollupAliasEntry[] = [];
 
 const commonInputOptions = {
   input: 'src/index.ts',
@@ -73,4 +76,3 @@ const config = [
 ];
 
 export default config;
-
