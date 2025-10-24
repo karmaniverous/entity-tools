@@ -111,4 +111,9 @@
 
   - Knip: ignore tsd type tests
     - Updated knip.json to ignore tests/types/** so type tests consumed by the
-      tsd CLI are not reported as unused files.
+      tsd CLI are not reported as unused files.
+
+  - STAN build warnPattern: match other warnings, ignore defaulting notice
+    - Updated warnPattern to select Rollup warning lines that start with "(!) "
+      while excluding the specific "@rollup/plugin-typescript: outputToFile[Ss]ystem option is defaulting to true"
+      message. This surfaces real warnings and suppresses the benign notice.
