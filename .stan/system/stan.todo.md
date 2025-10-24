@@ -76,4 +76,10 @@
       rollup.config.ts so Rollup can parse it without special loaders, while
       keeping the file in TypeScript. Kept createRequire for package.json and
       flattened DTS plugins array. This matches the template behavior where the
-      TS config builds cleanly without NODE_OPTIONS or ts-node loaders.
+      TS config builds cleanly without NODE_OPTIONS or ts-node loaders.
+  - Cleanup: remove unused Mocha/NYC tooling and legacy type packages; update keywords
+    - Removed devDependencies no longer used after Vitest migration:
+      @types/eslint__js, @types/eslint-config-prettier, @types/eslint-plugin-mocha,
+      @types/mocha, eslint-plugin-mocha, jsdom-global, mocha, nyc,
+      source-map-support, ts-node, tsd.
+    - Updated package keywords: drop mocha/nyc/chai; add vitest.
