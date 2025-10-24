@@ -19,7 +19,7 @@ stan-cli:
     test: npm run test -- --no-color
     build:
       script: cross-env NO_COLOR=1 npm run build
-      warnPattern: loaded [\\w.]+ with warnings(?![\\s\\S]*outputToFile[Ss]ystem option is defaulting to true)
+      warnPattern: '@rollup/plugin-typescript: outputToFile[Ss]ystem option is defaulting to true'
     docs:
       script: npm run docs -- --emit none
       warnPattern: \\[warning\\]

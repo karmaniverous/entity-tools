@@ -99,3 +99,12 @@
       (auto-changelog via release-it hooks, cross-env via STAN scripts).
     - Updated STAN build warnPattern to use a dot-all negative lookahead so the
       Rollup TS “outputToFilesystem option is defaulting to true” line is ignored.
+
+  - Type tests: migrate to tsd
+    - Added tsd devDependency and npm script "type:test".
+    - Created tsd.config.json with directory tests/types and strict compiler options.
+    - Added tests/types/MutuallyExclusive.test-d.ts covering type cases using
+      tsd expectType/expectAssignable/expectNotAssignable; removed Vitest-only
+      type assertions from runtime tests.
+  - STAN build: ignore rollup plugin typescript defaulting warning
+    - Simplified build warnPattern to match the exact message so it is ignored reliably.
