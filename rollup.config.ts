@@ -1,9 +1,8 @@
-import aliasPlugin, { Alias } from '@rollup/plugin-alias';
+import aliasPlugin from '@rollup/plugin-alias';
 import commonjsPlugin from '@rollup/plugin-commonjs';
 import jsonPlugin from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescriptPlugin from '@rollup/plugin-typescript';
-import type { InputOptions, RollupOptions } from 'rollup';
 import dtsPlugin from 'rollup-plugin-dts';
 import { createRequire } from 'node:module';
 
@@ -20,21 +19,19 @@ const commonPlugins = [
   typescriptPlugin(),
 ];
 
-const commonAliases: Alias[] = [];
+const commonAliases = [];
 
-type Package = Record<string, Record<string, string> | undefined>;
-
-const commonInputOptions: InputOptions = {
+const commonInputOptions = {
   input: 'src/index.ts',
   external: [
-    ...Object.keys((pkg as unknown as Package).dependencies ?? {}),
-    ...Object.keys((pkg as unknown as Package).peerDependencies ?? {}),
+    ...Object.keys(pkg?.dependencies ?? {}),
+    ...Object.keys(pkg?.peerDependencies ?? {}),
     'tslib',
   ],
   plugins: [aliasPlugin({ entries: commonAliases }), ...commonPlugins],
 };
 
-const config: RollupOptions[] = [
+const config = [
   // ESM output.
   {
     ...commonInputOptions,

@@ -70,4 +70,10 @@
   - Build: keep Rollup config in TypeScript per template
     - Switched build script to `--configPlugin @rollup/plugin-typescript` so the
       TS config is compiled reliably (aligns with template repo). No migration
-      away from TS config.
+      away from TS config.
+  - Build: align rollup.config.ts with template (JS-compatible TS)
+    - Removed TypeScript-only syntax (type imports/annotations) from
+      rollup.config.ts so Rollup can parse it without special loaders, while
+      keeping the file in TypeScript. Kept createRequire for package.json and
+      flattened DTS plugins array. This matches the template behavior where the
+      TS config builds cleanly without NODE_OPTIONS or ts-node loaders.
