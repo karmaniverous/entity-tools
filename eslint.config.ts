@@ -87,6 +87,9 @@ export default [
     rules: {
       // Apply Vitest's recommended rules for test files
       ...(vitestPlugin.configs.recommended.rules as Record<string, unknown>),
+      // Our tests use Chai chainers (e.g., expect(...).to.deep.equal(...)),
+      // which this rule flags. Disable to support chai-style assertions.
+      'vitest/valid-expect': 'off',
     },
   },
 ];

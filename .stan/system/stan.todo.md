@@ -137,3 +137,4 @@
     - Updated eslint.config.ts to load the plugin and apply
       vitestPlugin.configs.recommended rules to \*_/_.test.ts.
     - Kept explicit Vitest globals for describe/it/expect.
+  - Amendment: Typecheck: run "tsd" without a path so tsd.config.json's directory is honored (fixes lookup under tests/types).
