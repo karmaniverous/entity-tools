@@ -6,23 +6,22 @@
   additional test-rule coverage; for now mocha plugin has been removed.
 - DevDeps hygiene (optional): remove leftover Mocha/NYC packages after the
   migration stabilizes across CI.
-- knip config (optional): ignore dev tools invoked outside code (e.g., cross-env
-  via stan.config.yml, auto-changelog via release-it hooks) to avoid false positives.
 
 ## Completed (recent)
-- Migrate tests from Mocha/NYC to Vitest.
+
+- Migrate tests from Mocha/NYC to Vitest.
   - Added vitest and @vitest/coverage-v8 devDependencies.
   - Created vitest.config.ts with Node env, globals, and V8 coverage reporters.
   - Switched npm "test" script to run Vitest with coverage under dotenvx.
   - Updated tsconfig.json to limit "types" to ["node", "vitest"], disabled
-    checkJs/allowJs, and restricted includes to "src/**/*" to avoid pulling in
-    JS configs (fixes 'eslint__js' type errors in typecheck/docs/build).
+    checkJs/allowJs, and restricted includes to "src/\*_/_" to avoid pulling in
+    JS configs (fixes 'eslint\_\_js' type errors in typecheck/docs/build).
   - Removed mocha plugin from eslint.config.js to fix flat-config errors; kept
     Prettier, TS-ESLint, TSDoc, and import sorting.
   - Updated tests to import expect from vitest; removed Mocha/NYC configs and
     updated VS Code recommendations/settings.
   - Refined toolchain to stabilize after Vitest migration:
-    - tsconfig.json: removed global Vitest types and excluded *.test.ts from the
+    - tsconfig.json: removed global Vitest types and excluded \*.test.ts from the
       main TS program so tsc/typedoc/build don’t require Vitest types.
     - eslint.config.js: added test-file override to declare vitest globals and
       disable type-info-heavy unsafe rules that are noisy in tests.
@@ -31,19 +30,19 @@
   - Migrated ESLint to a flat, type-aware TypeScript config.
     - Created eslint.config.ts with strict typed lint for sources, Prettier
       integration, import sorting, and TSDoc syntax checks.
-    - Added untyped override and Vitest globals for *.test.ts to avoid TSConfig
+    - Added untyped override and Vitest globals for \*.test.ts to avoid TSConfig
       inclusion errors during lint runs. Removed eslint.config.js.
-    - Scoped type-aware ESLint rules to src/**/*.ts only and disabled
+    - Scoped type-aware ESLint rules to src/\*_/_.ts only and disabled
       type-checked rules for test files using typescript-eslint
       disableTypeChecked config. This resolves errors such as
       "@typescript-eslint/await-thenable requires type information" when
       linting tests without parserOptions.project.
     - Removed reliance on typescript-eslint disableTypeChecked preset (not
-      iterable in this setup). Instead, explicitly ignored src/**/*.test.ts
+      iterable in this setup). Instead, explicitly ignored src/\*_/_.test.ts
       within the typed config block and kept an untyped test override with
       Vitest globals.
   - Enforce typed ESLint rules for all TS files (tests included).
-    - Updated eslint.config.ts to apply strictTypeChecked to **/*.ts and use the
+    - Updated eslint.config.ts to apply strictTypeChecked to \*_/_.ts and use the
       root tsconfig.json (no dedicated ESLint tsconfig). Kept only Vitest
       globals override for tests without disabling rules.
     - Updated tsconfig.json to include tests and provide Vitest globals
@@ -77,10 +76,26 @@
       TS config builds cleanly without NODE_OPTIONS or ts-node loaders.
   - Cleanup: remove unused Mocha/NYC tooling and legacy type packages; update keywords
     - Removed devDependencies no longer used after Vitest migration:
-      @types/eslint__js, @types/eslint-config-prettier, @types/eslint-plugin-mocha,
+      @types/eslint\_\_js, @types/eslint-config-prettier, @types/eslint-plugin-mocha,
       @types/mocha, eslint-plugin-mocha, jsdom-global, mocha, nyc,
       source-map-support, ts-node, tsd.
     - Updated package keywords: drop mocha/nyc/chai; add vitest.
   - Build: confirmed template-aligned TS Rollup config builds cleanly with
     `@rollup/plugin-typescript` on rollup.config.ts; removing the “Next up” build
-    investigation item.
+    investigation item.
+
+  - Knip: resolve unused file/dependency reports
+    - Ignored type-only test file and docs assets: src/MutuallyExclusive.types.ts, docs/\*\*.
+    - Ignored dev dependencies used via scripts/CLI outside code scanning:
+      auto-changelog (release-it hooks), cross-env (STAN build script).
+    - Updated STAN build warnPattern to robustly ignore Rollup Typescript
+      “outputToFilesystem option is defaulting to true” (covers both spellings).
+
+  - Knip + type tests:
+    - Ported type-only MutuallyExclusive checks to Vitest using expectTypeOf
+      (src/MutuallyExclusive.test.ts) and removed the standalone
+      src/MutuallyExclusive.types.ts.
+    - Knip config now ignores docs/\*\* and script-only dev dependencies
+      (auto-changelog via release-it hooks, cross-env via STAN scripts).
+    - Updated STAN build warnPattern to use a dot-all negative lookahead so the
+      Rollup TS “outputToFilesystem option is defaulting to true” line is ignored.
