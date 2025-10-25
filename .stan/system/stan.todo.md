@@ -144,3 +144,8 @@
       to skip `never` elements so inputs containing `never` return `true`.
     - Updated tests/types/MutuallyExclusive.test-d.ts to use
       expectAssignable for error-shape checks with literal message types.
+  - Docs: README exports pass and examples
+    - Expanded README with an exports overview, installation, and examples
+      for sort, updateRecord, conditionalize, isNil, and defaultTranscodes.
+    - Corrected a minor export issue discovered while documenting:
+      re-exported `conditionalize` as a value (runtime function).
