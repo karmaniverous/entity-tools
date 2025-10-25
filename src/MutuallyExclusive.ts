@@ -22,7 +22,7 @@ export type AllDisjoint<
   First extends string,
   Rest extends string[],
 > = Rest extends [infer Head, ...infer Tail]
-  ? Head extends string
+  ? [Head] extends [string]
     ? [First & Head] extends [never]
       ? AllDisjoint<First, Tail extends string[] ? Tail : []>
       : { __error__: `overlaps on ${First}` }
@@ -51,11 +51,13 @@ export type MutuallyExclusive<T extends string[]> = T extends [
   infer Head,
   ...infer Tail,
 ]
-  ? Head extends string
+  ? [Head] extends [string]
     ? Tail extends string[]
-      ? AllDisjoint<Head, Tail> extends true
+      ? [Head] extends [never]
         ? MutuallyExclusive<Tail>
-        : AllDisjoint<Head, Tail>
+        : AllDisjoint<Head & string, Tail> extends true
+          ? MutuallyExclusive<Tail>
+          : AllDisjoint<Head & string, Tail>
       : true
     : true
   : true;

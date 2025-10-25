@@ -138,3 +138,9 @@
     - Added test-d/index.test-d.ts harness that imports our existing tests
       from tests/types, matching tsd's default discovery rules.
     - Updated knip.json to ignore test-d/\*\*.
+
+  - TSD: stabilize MutuallyExclusive types and tests
+    - Updated src/MutuallyExclusive.ts to avoid distributive conditionals and
+      to skip `never` elements so inputs containing `never` return `true`.
+    - Updated tests/types/MutuallyExclusive.test-d.ts to use
+      expectAssignable for error-shape checks with literal message types.
