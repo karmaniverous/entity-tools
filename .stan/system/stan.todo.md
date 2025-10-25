@@ -2,11 +2,6 @@
 
 ## Next up
 
-- CI: ensure tsd runs in CI (typecheck runs "tsc && tsd tests/types"); consider
-  a single "ci:test" script combining lint, typecheck, test, build.
-- Optional: remove @rollup/plugin-alias if alias entries remain unused; the
-  typed empty array is harmless.
-
 ## Completed (recent)
 
 - Migrate tests from Mocha/NYC to Vitest.
@@ -137,4 +132,9 @@
     - Updated eslint.config.ts to load the plugin and apply
       vitestPlugin.configs.recommended rules to \*_/_.test.ts.
     - Kept explicit Vitest globals for describe/it/expect.
-  - Amendment: Typecheck: run "tsd" without a path so tsd.config.json's directory is honored (fixes lookup under tests/types).
+  - Amendment: Typecheck: run "tsd" without a path so tsd.config.json's directory is honored (fixes lookup under tests/types).
+
+  - Type tests: make tsd discover tests without changing scripts/config
+    - Added test-d/index.test-d.ts harness that imports our existing tests
+      from tests/types, matching tsd's default discovery rules.
+    - Updated knip.json to ignore test-d/\*\*.
