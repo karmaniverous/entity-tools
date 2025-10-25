@@ -1,6 +1,6 @@
 # Entity Tools
 
-[![npm version](https://img.shields.io/npm/v/@karmaniverous/entity-tools.svg)](https://www.npmjs.com/package/@karmaniverous/entity-tools) ![Node Current](https://img.shields.io/node/v/@karmaniverous/entity-tools) <!-- TYPEDOC_EXCLUDE --> [![docs](https://img.shields.io/badge/docs-website-blue)](https://docs.karmanivero.us/stan) [![changelog](https://img.shields.io/badge/changelog-latest-blue.svg)](https://github.com/karmaniverous/entity-tools/tree/main/CHANGELOG.md)<!-- /TYPEDOC_EXCLUDE --> [![license](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](https://github.com/karmaniverous/entity-tools/tree/main/LICENSE.md)
+[![npm version](https://img.shields.io/npm/v/@karmaniverous/entity-tools.svg)](https://www.npmjs.com/package/@karmaniverous/entity-tools) ![Node Current](https://img.shields.io/node/v/@karmaniverous/entity-tools) <!-- TYPEDOC_EXCLUDE --> [![docs](https://img.shields.io/badge/docs-website-blue)](https://docs.karmanivero.us/entity-tools) [![changelog](https://img.shields.io/badge/changelog-latest-blue.svg)](https://github.com/karmaniverous/entity-tools/tree/main/CHANGELOG.md)<!-- /TYPEDOC_EXCLUDE --> [![license](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](https://github.com/karmaniverous/entity-tools/tree/main/LICENSE.md)
 
 Entity Tools provides a compact set of runtime utilities and type-level helpers for working with data models (Entities), sorting, shallow updates, and safe transcoding between values and lexicographically sortable strings.
 
