@@ -162,4 +162,10 @@
     registry) bind to the typed signature and regain contextual typing (fixes
     TS2322/TS2344/TS7006). Kept NonUnknownRegistry and
     EncodeDecodeAgreement<T> in the typed overload so the mismatch literal
-    remains ineligible and still fails via the inference-first overload.
+    remains ineligible and still fails via the inference-first overload.
+
+- Default transcodes: select typed overload explicitly
+  - Updated src/defaultTranscodes.ts to call
+    defineTranscodes<DefaultTranscodeRegistry, Transcodes<DefaultTranscodeRegistry>>(...)
+    so the typed overload is selected (not the inference-first signature with a
+    single generic). Clears TS2344 in build/docs/typecheck.
