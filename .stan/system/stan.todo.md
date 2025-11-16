@@ -177,4 +177,15 @@
     the typed overload and restores contextual typing, resolving tsd’s constraint
     error.
   - Aligned defaultTranscodes to pass a single type argument so it selects the
-    typed overload consistently.
+    typed overload consistently.
+
+- Consolidate defineTranscodes to inference-first only
+  - Removed typed overloads and kept a single inference-first signature that
+    requires both encode and decode and enforces agreement per key.
+  - Updated defaultTranscodes to call defineTranscodes(spec) with no generics;
+    contextual typing supplies decode(string) (no implicit-any).
+  - Updated tsd tests: the “typed-overload usage” now calls inference-first and
+    validates assignability to Transcodes<MyRegistry>; inference-first usage and
+    mismatch remain as before. This resolves the “unused @ts-expect-error”
+    failure and eliminates overload-resolution churn while matching the project
+    intent: ALL typing is inference-first.

@@ -28,7 +28,7 @@ const typedSpec: Transcodes<MyRegistry> = {
   },
 };
 
-const typedBuilt = defineTranscodes<MyRegistry>(typedSpec);
+const typedBuilt = defineTranscodes(typedSpec);
 expectAssignable<Transcodes<MyRegistry>>(typedBuilt);
 
 // Inference-first usage (derive TR from decode())
