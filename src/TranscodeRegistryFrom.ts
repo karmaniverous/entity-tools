@@ -1,5 +1,3 @@
-import type { Transcoder } from './Transcoder';
-
 /**
  + Maps a record of transcoders to a TranscodeRegistry type by extracting each
  + entry's decode return type.

@@ -4,6 +4,12 @@ import type { TranscodeRegistryFrom } from './TranscodeRegistryFrom';
 import type { Transcodes } from './Transcodes';
 
 // Internal helper types to enforce encode/decode agreement.
+export type IsUnknown<T> = unknown extends T
+  ? [T] extends [unknown]
+    ? true
+    : false
+  : false;
+
 export type EncodeParam<F> = F extends { encode: (value: infer V) => string }
   ? V
   : never;
@@ -20,11 +26,15 @@ export type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
 export type EncodeDecodeAgreement<
   T extends Record<string, Transcoder<unknown>>,
 > = {
-  [K in keyof T]-?: [EncodeParam<T[K]>] extends [DecodeReturn<T[K]>]
-    ? [DecodeReturn<T[K]>] extends [EncodeParam<T[K]>]
-      ? T[K]
-      : never
-    : never;
+  [K in keyof T]-?: IsUnknown<EncodeParam<T[K]>> extends true
+    ? never
+    : IsUnknown<DecodeReturn<T[K]>> extends true
+      ? never
+      : [EncodeParam<T[K]>] extends [DecodeReturn<T[K]>]
+        ? [DecodeReturn<T[K]>] extends [EncodeParam<T[K]>]
+          ? T[K]
+          : never
+        : never;
 };
 
 /**

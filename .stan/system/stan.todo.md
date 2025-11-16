@@ -118,4 +118,11 @@
     decode signature (`{ decode: (string) => unknown }`). This enables
     value-first literal specs (with precise encode parameter types) to be used
     directly without a cast while preserving "never use any" policy.
-  - Verified: vitest still passes; typecheck now succeeds for tsd cases.
+  - Verified: vitest still passes; typecheck now succeeds for tsd cases.
+
+- TSD/lint hardening
+  - PropertiesNotOfType: also exclude index signatures (unknown) in addition to
+    undefined-only properties; keeps UntranscodableProperties precise.
+  - defineTranscodes: EncodeDecodeAgreement now treats unknown on either side as
+    a mismatch, restoring the intended compile-time failure in the mismatch
+    test. No runtime impact. Removed an unused import to satisfy ESLint.
