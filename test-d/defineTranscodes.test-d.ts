@@ -1,6 +1,5 @@
 import { expectAssignable, expectNotAssignable } from 'tsd';
 
-import type { Transcoder } from '../src/Transcoder';
 import { defineSortOrder } from '../src/defineSortOrder';
 import { defineTranscodes } from '../src/defineTranscodes';
 import type { Entity } from '../src/Entity';
@@ -77,4 +76,3 @@ expectAssignable<SortOrder<E>>(so);
 
 // @ts-expect-error invalid property name
 defineSortOrder<E>([{ property: 'z' as const }]);
-

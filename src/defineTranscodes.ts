@@ -9,6 +9,26 @@ export type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
   : never;
 
 /**
+ * Branded error shapes to improve DX when encode/decode agreement fails.
+ */
+export type MissingEncodeError<K extends string> = {
+  __error__: 'MissingEncode';
+  key: K;
+};
+
+export type MissingDecodeError<K extends string> = {
+  __error__: 'MissingDecode';
+  key: K;
+};
+
+export type EncodeDecodeMismatchError<K extends string, E, D> = {
+  __error__: 'EncodeDecodeMismatch';
+  key: K;
+  encodeParam: E;
+  decodeReturn: D;
+};
+
+/**
  * Ensures that for each entry K:
  *  - encode: (value: VK) =\> string
  *  - decode: (value: string) =\> VK
@@ -17,15 +37,21 @@ export type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
 export type EncodeDecodeAgreement<
   T extends Record<string, { decode: (value: string) => unknown }>,
 > = {
-  [K in keyof T]-?: [EncodeParam<T[K]>] extends [never]
-    ? never
-    : [DecodeReturn<T[K]>] extends [never]
-      ? never
-      : [EncodeParam<T[K]>] extends [DecodeReturn<T[K]>]
-        ? [DecodeReturn<T[K]>] extends [EncodeParam<T[K]>]
-          ? T[K]
-          : never
-        : never;
+  [K in keyof T]-?: K extends string
+    ? [EncodeParam<T[K]>] extends [never]
+      ? MissingEncodeError<K>
+      : [DecodeReturn<T[K]>] extends [never]
+        ? MissingDecodeError<K>
+        : [EncodeParam<T[K]>] extends [DecodeReturn<T[K]>]
+          ? [DecodeReturn<T[K]>] extends [EncodeParam<T[K]>]
+            ? T[K]
+            : EncodeDecodeMismatchError<
+                K,
+                EncodeParam<T[K]>,
+                DecodeReturn<T[K]>
+              >
+          : EncodeDecodeMismatchError<K, EncodeParam<T[K]>, DecodeReturn<T[K]>>
+    : T[K];
 };
 
 /**

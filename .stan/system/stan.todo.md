@@ -208,4 +208,14 @@
 - TSD directive placement
   - Moved the `@ts-expect-error` directive in
     test-d/defineTranscodes.test-d.ts to the offending property line (`bad:`)
-    so it suppresses the correct node and resolves the tsd failure.
+    so it suppresses the correct node and resolves the tsd failure.
+
+- Branded error shapes for agreement failures
+  - Enhanced EncodeDecodeAgreement to return branded error shapes
+    (MissingEncode, MissingDecode, EncodeDecodeMismatch) for clearer DX when a
+    spec is unsatisfiable. The builder type still rejects mismatches; these
+    branded shapes aid the compiler’s error reporting and developer
+    understanding.
+  - Added tsd tests (test-d/encodeDecodeAgreement.test-d.ts) to assert the
+    branded error shapes for mismatches and missing encode, and that valid cases
+    return the original transcoder shapes.
