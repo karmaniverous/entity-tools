@@ -71,4 +71,13 @@
     overload; implementation avoids any.
   - defaultTranscodes: annotated encode parameter types and used the typed overload to
     satisfy DefaultTranscodeRegistry; resolved TS2740/TS2322 errors.
-  - Removed unused exported types from KV helpers to satisfy knip.
+  - Removed unused exported types from KV helpers to satisfy knip.
+
+- Docs & tests
+  - Exported EncodeParam and DecodeReturn and re-exported from index, resolving
+    Typedoc warnings about missing referenced types in EncodeDecodeAgreement.
+  - Added tsd tests (tests/types/defineTranscodes.test-d.ts) for builder overloads,
+    TranscodeRegistryFrom/TranscodedType/TranscodeName, and defineSortOrder typing.
+  - Added runtime tests: src/kv/codec.test.ts (KV codec roundtrip/errors/custom
+    delimiters) and src/sharding/sharding.test.ts (hash determinism, suffix
+    enumeration/formatting, parameter validation).

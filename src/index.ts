@@ -35,6 +35,8 @@ export { updateRecord } from './updateRecord';
 export type { WithRequiredAndNonNullable } from './WithRequiredAndNonNullable';
 // Transcoding helpers and names
 export type { EncodeDecodeAgreement } from './defineTranscodes';
+export type { EncodeParam } from './defineTranscodes';
+export type { DecodeReturn } from './defineTranscodes';
 export { defineTranscodes } from './defineTranscodes';
 export type { TranscodedType } from './TranscodedType';
 export type { TranscodeName } from './TranscodeName';

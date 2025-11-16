@@ -4,10 +4,10 @@ import type { TranscodeRegistryFrom } from './TranscodeRegistryFrom';
 import type { Transcodes } from './Transcodes';
 
 // Internal helper types to enforce encode/decode agreement.
-type EncodeParam<F> = F extends { encode: (value: infer V) => string }
+export type EncodeParam<F> = F extends { encode: (value: infer V) => string }
   ? V
   : never;
-type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
+export type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
   ? V
   : never;
 
