@@ -218,4 +218,9 @@
     understanding.
   - Added tsd tests (test-d/encodeDecodeAgreement.test-d.ts) to assert the
     branded error shapes for mismatches and missing encode, and that valid cases
-    return the original transcoder shapes.
+    return the original transcoder shapes.
+
+- Interop response (entity-manager)
+  - Added .stan/interop/entity-manager/inference-first-transcodes-and-type-parameter-dictionary.response.md
+    detailing shipped changes (inference-first builder, branded errors, canonical naming),
+    migration notes, and action items for EM. Ready for release.
