@@ -1,4 +1,3 @@
-import type { Transcoder } from './Transcoder';
 import type { TranscodeRegistry } from './TranscodeRegistry';
 import type { TranscodeRegistryFrom } from './TranscodeRegistryFrom';
 import type { Transcodes } from './Transcodes';
@@ -24,7 +23,7 @@ export type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
  * and VK matches in both positions (bi-directionally).
  */
 export type EncodeDecodeAgreement<
-  T extends Record<string, Transcoder<unknown>>,
+  T extends Record<string, { decode: (value: string) => unknown }>,
 > = {
   [K in keyof T]-?: IsUnknown<EncodeParam<T[K]>> extends true
     ? never
