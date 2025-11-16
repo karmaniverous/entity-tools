@@ -11,5 +11,3 @@ export function encodePairs(
   if (!pairs.length) return '';
   return pairs.map(([k, v]) => `${k}${kv}${v}`).join(pair);
 }
-
-export type EncodePairsOptions = Parameters<typeof encodePairs>[1];

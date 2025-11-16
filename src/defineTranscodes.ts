@@ -1,4 +1,5 @@
 import type { Transcoder } from './Transcoder';
+import type { TranscodeRegistry } from './TranscodeRegistry';
 import type { TranscodeRegistryFrom } from './TranscodeRegistryFrom';
 import type { Transcodes } from './Transcodes';
 
@@ -25,15 +26,20 @@ type EncodeDecodeAgreement<T extends Record<string, Transcoder<unknown>>> = {
 };
 
 /**
- + Value-first builder for transcode registries. Preserves literal keys and
- + enforces compile-time agreement between encode and decode types.
- +
- + Returns the same value at runtime; the return type is narrowed to
- + Transcodes\<TranscodeRegistryFrom<T>\> for API ergonomics.
+ * Value-first builder for transcode registries.
+ * Overload A: fully typed registries (best for canonical/default registries).
+ */
+export function defineTranscodes<TR extends TranscodeRegistry>(
+  spec: Transcodes<TR>,
+): Transcodes<TR>;
+/**
+ * Overload B: inference-first — derive the registry shape from decode() return types.
+ * Enforces encode/decode agreement per key.
  */
 export function defineTranscodes<
   const T extends Record<string, Transcoder<unknown>>,
->(spec: T & EncodeDecodeAgreement<T>): Transcodes<TranscodeRegistryFrom<T>> {
-  // Runtime identity; the type-level narrowing is the purpose of this helper.
-  return spec as unknown as Transcodes<TranscodeRegistryFrom<T>>;
+>(spec: T & EncodeDecodeAgreement<T>): Transcodes<TranscodeRegistryFrom<T>>;
+export function defineTranscodes(spec: unknown) {
+  // Runtime identity; types are provided by overload resolution.
+  return spec;
 }

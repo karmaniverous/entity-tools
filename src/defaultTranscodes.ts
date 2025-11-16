@@ -12,9 +12,9 @@ import type { Transcodes } from './Transcodes';
  * @category Transcoding
  */
 export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
-  defineTranscodes({
+  defineTranscodes<DefaultTranscodeRegistry>({
     bigint: {
-      encode: (value) => {
+      encode: (value: bigint) => {
         if (typeof value !== 'bigint') throw new Error('invalid bigint');
 
         return value.toString();
@@ -28,7 +28,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
       },
     },
     bigint20: {
-      encode: (value) => {
+      encode: (value: bigint) => {
         if (
           typeof value !== 'bigint' ||
           value > 99999999999999999999n ||
@@ -48,12 +48,12 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
       },
     },
     boolean: {
-      encode: (value) => {
+      encode: (value: boolean) => {
         if (typeof value !== 'boolean') throw new Error('invalid boolean');
 
         return value.toString()[0];
       },
-      decode: (value) => {
+      decode: (value: string): boolean => {
         if (!isString(value) || !/^[tf]$/.test(value))
           throw new Error('invalid encoded boolean');
 
@@ -61,7 +61,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
       },
     },
     fix6: {
-      encode: (value) => {
+      encode: (value: number) => {
         if (
           !isNumber(value) ||
           value > Number.MAX_SAFE_INTEGER / 1000000 ||
@@ -81,7 +81,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
       },
     },
     int: {
-      encode: (value) => {
+      encode: (value: number) => {
         if (!isInt(value)) throw new Error('invalid int');
 
         const [prefix, abs] = value < 0 ? ['n', -value] : ['p', value];
@@ -96,7 +96,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
       },
     },
     number: {
-      encode: (value) => {
+      encode: (value: number) => {
         if (typeof value !== 'number') throw new Error('invalid number');
 
         return value.toString();
@@ -110,19 +110,19 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
       },
     },
     string: {
-      encode: (value) => {
+      encode: (value: string) => {
         if (!isString(value)) throw new Error('invalid string');
 
         return value;
       },
-      decode: (value) => {
+      decode: (value: string): string => {
         if (!isString(value)) throw new Error('invalid encoded string');
 
         return value;
       },
     },
     timestamp: {
-      encode: (value) => {
+      encode: (value: number) => {
         if (!isInt(value) || value < 0 || value > 9999999999999)
           throw new Error('invalid timestamp');
 

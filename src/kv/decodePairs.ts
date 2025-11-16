@@ -20,5 +20,3 @@ export function decodePairs(
     return [key, value];
   });
 }
-
-export type DecodePairsOptions = Parameters<typeof decodePairs>[1];

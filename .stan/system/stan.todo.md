@@ -66,3 +66,9 @@
 - Project prompt
   - Memorialized “never use any” policy and strict type-parameter dictionary.
 
+- Typing fixes & knip cleanup
+  - defineTranscodes: added typed-overload for Transcodes<TR> and kept inference-first
+    overload; implementation avoids any.
+  - defaultTranscodes: annotated encode parameter types and used the typed overload to
+    satisfy DefaultTranscodeRegistry; resolved TS2740/TS2322 errors.
+  - Removed unused exported types from KV helpers to satisfy knip.
