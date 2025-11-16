@@ -3,8 +3,7 @@
 ## Next up
 
 - Transcoding — types and builder (inference-first)
-  - Add types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeMap (alias),
-    TranscodeRegistryFrom<T>, TranscodeName<TR>.
+  - Add types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeRegistryFrom<T>, TranscodeName<TR>.
   - Implement defineTranscodes with compile-time encode/decode agreement (bi-directional
     type equality per key).
   - Export acronyms: EM, E, TR, TN, PK, V.
@@ -12,8 +11,8 @@
 - Default registry
   - Refactor defaultTranscodes to be authored via defineTranscodes without changing
     runtime behavior.
-  - Introduce DefaultTranscodeRegistry (canonical) and keep DefaultTranscodeMap as
-    an alias.
+  - Introduce DefaultTranscodeRegistry (canonical) and remove DefaultTranscodeMap
+    (no compatibility alias).
 
 - TSD tests (compile-time)
   - Add tests that prove defineTranscodes infers a registry type via

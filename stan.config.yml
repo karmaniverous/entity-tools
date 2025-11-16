@@ -1,7 +1,7 @@
 stan-core:
   stanPath: .stan
   excludes:
-    - '*.local'
+    - "*.local"
     - assets/**
     - CHANGELOG.md
     - docs/**
@@ -12,6 +12,7 @@ stan-core:
       - ../entity-manager/.stan/system/stan.todo.md
       - ../entity-manager/dist/index.d.ts
       - ../entity-manager/.stan/interop/entity-client-dynamodb/**
+  includes: []
 stan-cli:
   cliDefaults:
     run:
@@ -25,9 +26,10 @@ stan-cli:
     test: npm run test -- --no-color
     build:
       script: cross-env NO_COLOR=1 npm run build
-      warnPattern: '^\\(\\!\\)\\s(?!\\[plugin typescript\\]\\s@rollup/plugin-typescript: outputToFile[Ss]ystem option is defaulting to true\\b).+'
+      warnPattern: "^\\\\(\\\\!\\\\)\\\\s(?!\\\\[plugin
+        typescript\\\\]\\\\s@rollup/plugin-typescript: outputToFile[Ss]ystem
+        option is defaulting to true\\\\b).+"
     docs:
       script: npm run docs -- --emit none
       warnPattern: \\[warning\\]
     knip: npm run knip
-

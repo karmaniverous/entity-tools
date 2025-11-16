@@ -12,7 +12,7 @@ Scope and goals
 High-level objectives for this release
 
 - Introduce a value-first, inference-preserving transcode registry builder with compile-time agreement between encoder and decoder types.
-- Establish canonical transcode vocabulary and aliases for consistency across dependent packages.
+- Establish canonical transcode vocabulary and acronym exports for consistency across dependent packages.
 - Promote provider-agnostic helpers from downstream usage into this library when they are generic (KV pair codec; sharding math primitives).
 - Keep default transcoding behavior intact; define defaults using the new builder.
 
@@ -24,8 +24,7 @@ Transcoding model (inference-first)
 
 - TranscodeRegistry (canonical; replaces TranscodeMap as preferred name)
   - A mapping from transcode name to the value type it encodes (e.g., { int: number; bigint20: bigint }).
-  - TranscodeMap remains as an alias to TranscodeRegistry for compatibility with existing consumers.
-
+  - No compatibility alias is provided.
 - Transcodes<TR extends TranscodeRegistry>
   - The runtime registry interface mapping each transcode name to its { encode, decode } implementation with consistent value types inferred from TR.
   - Keys are exact (Exactify) and string-literal preserving.
@@ -63,8 +62,8 @@ Default transcodes (unchanged behavior, builder-authored)
   - bigint20: signed fixed-width up to 20 digits ("p"/"n" prefix); lexicographic order matches numeric order.
   - timestamp: fixed-width 13-digit UNIX milliseconds, zero-padded; non-negative, ≤ 9999999999999.
 - Encoders throw on invalid inputs; decoders throw on invalid encoded strings.
-- Canonical naming:
-  - DefaultTranscodeRegistry (canonical) supersedes DefaultTranscodeMap (alias retained).
+- Canonical naming (no compatibility aliases):
+  - DefaultTranscodeRegistry (canonical).
   - defaultTranscodes must be exported as Transcodes<DefaultTranscodeRegistry> built with defineTranscodes.
 
 Extended acronym exports (entity-agnostic)
@@ -153,11 +152,11 @@ Existing type utilities (unchanged)
 Canonical naming and exports (requirements)
 
 - Exports must include:
-  - New types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeMap (alias), TranscodeRegistryFrom<T>, TranscodeName<TR>.
+  - New types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeRegistryFrom<T>, TranscodeName<TR>.
   - New builder: defineTranscodes.
   - New helpers: encodePairs, decodePairs, hashString, enumerateShardSuffixes, shardSuffixFromHash.
   - Extended acronyms: EM, E, TR, TN, PK, V.
-  - Default registry types: DefaultTranscodeRegistry (canonical), DefaultTranscodeMap (alias).
+  - Default registry types: DefaultTranscodeRegistry (canonical).
   - defaultTranscodes authored via defineTranscodes (no behavior changes vs prior implementation).
 - Typedoc/README must document:
   - How to author a custom registry with defineTranscodes (value-first).
