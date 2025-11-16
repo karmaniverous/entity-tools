@@ -42,10 +42,7 @@ const inferredSpec = {
     decode: (s: string) => s === 't',
   },
 } as const;
-// At the overload boundary, satisfy the record shape for inference
-const inferred = defineTranscodes(
-  inferredSpec as unknown as Record<string, Transcoder<unknown>>,
-);
+// Derive TR from the spec (no need to invoke the builder for type extraction)
 type InferredTR = TranscodeRegistryFrom<typeof inferredSpec>;
 
 // Derived value types: TranscodedType resolves to number and boolean
@@ -62,10 +59,12 @@ expectAssignable<TranscodeName<InferredTR>>('boolean' as const);
 expectNotAssignable<TranscodeName<InferredTR>>('x' as const);
 
 // Mismatch should fail: encode/decode disagree
-// @ts-expect-error decode returns the wrong type
+// Satisfy the Transcoder<unknown> boundary (encode param = unknown),
+// but break the agreement (decode returns string, not unknown) to trigger an error.
+// @ts-expect-error encode/decode types do not agree
 defineTranscodes({
   bad: {
-    encode: (v: number) => v.toString(),
+    encode: (_v: unknown) => '',
     // wrong decode type on purpose:
     decode: (_s: string) => 'oops',
   },

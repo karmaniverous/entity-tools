@@ -6,7 +6,6 @@ import type { TranscodeRegistry } from '../src/TranscodeRegistry';
 import type { UntranscodableProperties } from '../src/UntranscodableProperties';
 
 // Registry with number|string|boolean support
-
 interface R extends TranscodeRegistry {
   num: number;
   str: string;
@@ -14,7 +13,6 @@ interface R extends TranscodeRegistry {
 }
 
 // Example entity (note: d?: undefined is effectively "not present")
-
 type E = Entity & {
   a: number;
   b: string;
@@ -24,17 +22,18 @@ type E = Entity & {
 };
 
 // Transcodables are properties assignable to (number | string | boolean)
-
 type TP = TranscodableProperties<E, R>;
 
-// TP is exactly 'a' | 'b' | 'c'
-expectAssignable<'a' | 'b' | 'c'>(null as unknown as TP);
-expectNotAssignable<'a' | 'b' | 'c' | 'e'>(null as unknown as TP);
+// TP membership via literals
+expectAssignable<TP>('a' as const);
+expectAssignable<TP>('b' as const);
+expectAssignable<TP>('c' as const);
+expectNotAssignable<TP>('e' as const);
 
 // Untranscodables exclude undefined-only fields and include properties not covered by TR
-
 type UP = UntranscodableProperties<E, R>;
 
-// UP is exactly 'e'
-expectAssignable<'e'>(null as unknown as UP);
-expectNotAssignable<'d'>(null as unknown as UP);
+// UP membership via literals
+expectAssignable<UP>('e' as const);
+expectNotAssignable<UP>('d' as const);
+

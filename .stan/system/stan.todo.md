@@ -103,4 +103,9 @@
 - TSD stabilization (final)
   - defineTranscodes.test-d.ts: satisfied inference-overload boundary by casting
     the spec to Record<string, Transcoder<unknown>>; assertions for derived
-    types/names retained with literal checks.
+    types/names retained with literal checks.
+  - Finalize assertions:
+    - Use literal-based checks for Transcodable/Untranscodable unions.
+    - Derive TranscodeRegistryFrom from the spec (no builder invocation).
+    - Mismatch test: encode accepts unknown (boundary OK), decode returns string
+      (agreement fails as intended).
