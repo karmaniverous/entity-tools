@@ -12,12 +12,14 @@ type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
   : never;
 
 /**
- + Ensures that for each entry K:
- +   - encode: (value: VK) =\> string
- +   - decode: (value: string) =\> VK
- + and VK matches in both positions (bi-directionally).
+ * Ensures that for each entry K:
+ *  - encode: (value: VK) =\> string
+ *  - decode: (value: string) =\> VK
+ * and VK matches in both positions (bi-directionally).
  */
-type EncodeDecodeAgreement<T extends Record<string, Transcoder<unknown>>> = {
+export type EncodeDecodeAgreement<
+  T extends Record<string, Transcoder<unknown>>,
+> = {
   [K in keyof T]-?: [EncodeParam<T[K]>] extends [DecodeReturn<T[K]>]
     ? [DecodeReturn<T[K]>] extends [EncodeParam<T[K]>]
       ? T[K]
