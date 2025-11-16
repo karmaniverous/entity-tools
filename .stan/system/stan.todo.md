@@ -98,4 +98,9 @@
   - defineTranscodes.test-d.ts: derive registry from spec (not built object);
     assert TranscodedType/TranscodeName via literals; added @ts-expect-error for
     mismatch; stabilized assertions.
-  - transcodableProperties.test-d.ts: assert unions via 'a'|'b'|'c' literals; added a default registry assignability test.
+  - transcodableProperties.test-d.ts: assert unions via 'a'|'b'|'c' literals; added a default registry assignability test.
+
+- TSD stabilization (final)
+  - defineTranscodes.test-d.ts: satisfied inference-overload boundary by casting
+    the spec to Record<string, Transcoder<unknown>>; assertions for derived
+    types/names retained with literal checks.

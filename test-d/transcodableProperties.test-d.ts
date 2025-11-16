@@ -27,14 +27,14 @@ type E = Entity & {
 
 type TP = TranscodableProperties<E, R>;
 
-expectAssignable<TP>('a' as const);
-expectAssignable<TP>('b' as const);
-expectAssignable<TP>('c' as const);
-expectNotAssignable<TP>('e' as const);
+// TP is exactly 'a' | 'b' | 'c'
+expectAssignable<'a' | 'b' | 'c'>(null as unknown as TP);
+expectNotAssignable<'a' | 'b' | 'c' | 'e'>(null as unknown as TP);
 
 // Untranscodables exclude undefined-only fields and include properties not covered by TR
 
 type UP = UntranscodableProperties<E, R>;
 
-expectAssignable<UP>('e' as const);
-expectNotAssignable<UP>('d' as const);
+// UP is exactly 'e'
+expectAssignable<'e'>(null as unknown as UP);
+expectNotAssignable<'d'>(null as unknown as UP);

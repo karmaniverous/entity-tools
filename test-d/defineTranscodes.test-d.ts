@@ -1,5 +1,6 @@
 import { expectAssignable, expectNotAssignable } from 'tsd';
 
+import type { Transcoder } from '../src/Transcoder';
 import { defineSortOrder } from '../src/defineSortOrder';
 import { defineTranscodes } from '../src/defineTranscodes';
 import type { Entity } from '../src/Entity';
@@ -41,7 +42,10 @@ const inferredSpec = {
     decode: (s: string) => s === 't',
   },
 } as const;
-const inferred = defineTranscodes(inferredSpec);
+// At the overload boundary, satisfy the record shape for inference
+const inferred = defineTranscodes(
+  inferredSpec as unknown as Record<string, Transcoder<unknown>>,
+);
 type InferredTR = TranscodeRegistryFrom<typeof inferredSpec>;
 
 // Derived value types: TranscodedType resolves to number and boolean
@@ -58,6 +62,7 @@ expectAssignable<TranscodeName<InferredTR>>('boolean' as const);
 expectNotAssignable<TranscodeName<InferredTR>>('x' as const);
 
 // Mismatch should fail: encode/decode disagree
+// @ts-expect-error decode returns the wrong type
 defineTranscodes({
   bad: {
     encode: (v: number) => v.toString(),
