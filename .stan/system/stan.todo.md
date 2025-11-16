@@ -155,4 +155,11 @@
   - Updated the typed overload to introduce a second generic `T extends
     Transcodes<TR>` and require `EncodeDecodeAgreement<T>`. This checks
     encode/decode equality against the passed argument shape, ensuring the
-    mismatch test triggers a compile error even if the typed overload is chosen.
+    mismatch test triggers a compile error even if the typed overload is chosen.
+
+- Overload precedence (typed-first with guards)
+  - Restored typed overload order so explicit generic calls (e.g. default
+    registry) bind to the typed signature and regain contextual typing (fixes
+    TS2322/TS2344/TS7006). Kept NonUnknownRegistry and
+    EncodeDecodeAgreement<T> in the typed overload so the mismatch literal
+    remains ineligible and still fails via the inference-first overload.
