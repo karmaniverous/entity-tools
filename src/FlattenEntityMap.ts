@@ -21,31 +21,31 @@ export type EntityKeys<E extends Entity> = E extends E ? keyof E : never;
  * @category Entities
  * @protected
  */
-export type EntityValue<E extends Entity, P extends PropertyKey> = E extends
-  | Record<P, infer V>
-  | Partial<Record<P, infer V>>
+export type EntityValue<E extends Entity, PK extends PropertyKey> = E extends
+  | Record<PK, infer V>
+  | Partial<Record<PK, infer V>>
   ? V
   : never;
 
 /**
  * Returns a union of exactified entity types in an {@link EntityMap | `EntityMap`}.
  *
- * @typeParam M - The {@link EntityMap | `EntityMap`} type.
+ * @typeParam EM - The {@link EntityMap | `EntityMap`} type.
  *
  * @category Entities
  * @protected
  */
-export type EntityMapValues<M extends EntityMap> = {
-  [P in keyof M]: Exactify<M[P]>;
-}[keyof Exactify<M>];
+export type EntityMapValues<EM extends EntityMap> = {
+  [P in keyof EM]: Exactify<EM[P]>;
+}[keyof Exactify<EM>];
 
 /**
  * Flattens an {@link EntityMap | `EntityMap`} into a single object with matching key types unionized.
  *
- * @typeParam M - The {@link EntityMap | `EntityMap`} to flatten.
+ * @typeParam EM - The {@link EntityMap | `EntityMap`} to flatten.
  *
  * @category Entities
  */
-export type FlattenEntityMap<M extends EntityMap> = {
-  [K in EntityKeys<EntityMapValues<M>>]: EntityValue<EntityMapValues<M>, K>;
+export type FlattenEntityMap<EM extends EntityMap> = {
+  [K in EntityKeys<EntityMapValues<EM>>]: EntityValue<EntityMapValues<EM>, K>;
 };

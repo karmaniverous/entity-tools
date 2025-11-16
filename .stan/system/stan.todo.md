@@ -50,3 +50,19 @@
 
 **CRITICAL: This list is append-only; do not edit items! Place most recent entries at the BOTTOM of the list. When pruning, remove older entries from the top.**
 
+- Transcoding surface (canonical builder)
+  - Introduced TranscodeRegistry (canonical) and removed legacy TranscodeMap.
+  - Added defineTranscodes builder with compile-time encode/decode agreement.
+  - Refactored defaultTranscodes to use defineTranscodes and updated docs to
+    DefaultTranscodeRegistry.
+  - Added typing helpers: TranscodeRegistryFrom, TranscodeName, TranscodedType.
+  - Updated Transcodes, TranscodableProperties, UntranscodableProperties to use TR.
+
+- Helpers and DX
+  - Added KV codec: kv/encodePairs, kv/decodePairs.
+  - Added sharding math: sharding/hashString, enumerateShardSuffixes, shardSuffixFromHash.
+  - Added defineSortOrder<E> identity helper for typed sort descriptors.
+
+- Project prompt
+  - Memorialized “never use any” policy and strict type-parameter dictionary.
+

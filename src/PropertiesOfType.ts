@@ -1,19 +1,19 @@
 /**
- * Returns the properties of `object` `O` with types that extend type `T`. Ignores `undefined` types.
+ * Returns the properties of `object` `O` with types that extend type `V`. Ignores `undefined` types.
  *
  * @typeParam O - The `object` type.
- * @typeParam T - The type to filter by.
+ * @typeParam V - The type to filter by.
  *
  * @category Utilities
  */
-export type PropertiesOfType<O extends object, T> = keyof {
-  [Property in keyof O as [T] extends [never]
+export type PropertiesOfType<O extends object, V> = keyof {
+  [Property in keyof O as [V] extends [never]
     ? [NonNullable<O[Property]>] extends [never]
       ? Property
       : never
     : [NonNullable<O[Property]>] extends [never]
       ? never
-      : NonNullable<O[Property]> extends T
+      : NonNullable<O[Property]> extends V
         ? Property
         : never]: never;
 };

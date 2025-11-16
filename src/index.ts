@@ -3,8 +3,9 @@
  */
 export { conditionalize } from './conditionalize';
 export type { ConditionalProperty } from './ConditionalProperty';
-export type { DefaultTranscodeMap } from './DefaultTranscodeMap';
+export type { DefaultTranscodeRegistry } from './DefaultTranscodeRegistry';
 export { defaultTranscodes } from './defaultTranscodes';
+export { defineSortOrder } from './defineSortOrder';
 export type { Entity } from './Entity';
 export type { EntityMap } from './EntityMap';
 export type { Exactify } from './Exactify';
@@ -27,8 +28,21 @@ export type { ReplaceKeys } from './ReplaceKeys';
 export { sort } from './sort';
 export type { SortOrder } from './SortOrder';
 export type { TranscodableProperties } from './TranscodableProperties';
-export type { TranscodeMap } from './TranscodeMap';
+export type { TranscodeRegistry } from './TranscodeRegistry';
 export type { Transcodes } from './Transcodes';
 export type { UntranscodableProperties } from './UntranscodableProperties';
 export { updateRecord } from './updateRecord';
 export type { WithRequiredAndNonNullable } from './WithRequiredAndNonNullable';
+// Transcoding helpers and names
+export { defineTranscodes } from './defineTranscodes';
+export type { TranscodedType } from './TranscodedType';
+export type { TranscodeName } from './TranscodeName';
+export type { Transcoder } from './Transcoder';
+export type { TranscodeRegistryFrom } from './TranscodeRegistryFrom';
+// KV helpers
+export { decodePairs } from './kv/decodePairs';
+export { encodePairs } from './kv/encodePairs';
+// Sharding math helpers
+export { enumerateShardSuffixes } from './sharding/enumerateShardSuffixes';
+export { hashString } from './sharding/hashString';
+export { shardSuffixFromHash } from './sharding/shardSuffixFromHash';

@@ -1,13 +1,13 @@
 import type { Exactify } from './Exactify';
-import type { TranscodeMap } from './TranscodeMap';
+import type { TranscodeRegistry } from './TranscodeRegistry';
 
 /**
  * Maps transcode keys to their respective encoding and decoding functions.
  *
- * @typeParam T - The {@link TranscodeMap | `TranscodeMap`} type.
+ * @typeParam TR - The {@link TranscodeRegistry | `TranscodeRegistry`} type.
  *
  * @remarks
- * The keys of this object must exactly match the keys of the {@link TranscodeMap | `TranscodeMap`}.
+ * The keys of this object must exactly match the keys of the {@link TranscodeRegistry | `TranscodeRegistry`}.
  *
  * Each `encode` function must take the mapped type as an argument and return a `string`. Invalid values should throw an error.
  *
@@ -17,11 +17,11 @@ import type { TranscodeMap } from './TranscodeMap';
  *
  * @example
  * ```
- * interface MyTranscodeMap extends TranscodeMap {
+ * interface MyTranscodeRegistry extends TranscodeRegistry {
  *   fix6: number;
  * }
  *
- * const myTranscodes extends Transcodes<MyTranscodeMap> = {
+ * const myTranscodes: Transcodes<MyTranscodeRegistry> = {
  *   fix6: {
  *     encode: (value) => {
  *       if (
@@ -57,9 +57,9 @@ import type { TranscodeMap } from './TranscodeMap';
  *
  * @category Transcoding
  */
-export type Transcodes<T extends TranscodeMap> = {
-  [P in keyof Exactify<T>]: {
-    encode: (value: T[P]) => string;
-    decode: (value: string) => T[P];
+export type Transcodes<TR extends TranscodeRegistry> = {
+  [P in keyof Exactify<TR>]: {
+    encode: (value: TR[P]) => string;
+    decode: (value: string) => TR[P];
   };
 };

@@ -1,15 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { defaultTranscodes } from './defaultTranscodes'; // imported to support API docs
-import type { TranscodeMap } from './TranscodeMap';
+import type { TranscodeRegistry } from './TranscodeRegistry';
 
 /**
- * Default {@link TranscodeMap | `TranscodeMap`} supporting {@link defaultTranscodes | `defaultTranscodes`}.
+ * Default {@link TranscodeRegistry | `TranscodeRegistry`} supporting {@link defaultTranscodes | `defaultTranscodes`}.
  *
  * @see {@link Transcodes | `Transcodes`}
  *
  * @category Transcoding
  */
-export interface DefaultTranscodeMap extends TranscodeMap {
+export interface DefaultTranscodeRegistry extends TranscodeRegistry {
   /**
    * Supports variable-width transcoding of `BigInt` values. See {@link defaultTranscodes | `defaultTranscodes`} for implementation details.
    */

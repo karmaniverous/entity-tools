@@ -3,21 +3,21 @@ import type { EntityMap } from './EntityMap';
 import type { Exactify } from './Exactify';
 import type { FlattenEntityMap } from './FlattenEntityMap';
 import type { PropertiesNotOfType } from './PropertiesNotOfType';
-import type { TranscodeMap } from './TranscodeMap';
+import type { TranscodeRegistry } from './TranscodeRegistry';
 
 /**
- * Returns the properties of an {@link Entity | `Entity`} or {@link EntityMap | `EntityMap`} whose types are not covered by {@link TranscodeMap | `TranscodeMap`} `T`.
+ * Returns the properties of an {@link Entity | `Entity`} or {@link EntityMap | `EntityMap`} whose types are not covered by {@link TranscodeRegistry | `TranscodeRegistry`} `TR`.
  *
  * @typeParam O - The {@link Entity | `Entity`} or {@link EntityMap | `EntityMap`} type.
- * @typeParam T - The {@link TranscodeMap | `TranscodeMap`}.
+ * @typeParam TR - The {@link TranscodeRegistry | `TranscodeRegistry`}.
  *
  * @category Transcoding
  * @category Entities
  */
 export type UntranscodableProperties<
   O extends EntityMap | Entity,
-  T extends TranscodeMap,
+  TR extends TranscodeRegistry,
 > = PropertiesNotOfType<
   O extends EntityMap ? FlattenEntityMap<O> : O,
-  T[keyof Exactify<T>]
+  TR[keyof Exactify<TR>]
 >;
