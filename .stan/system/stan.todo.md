@@ -80,4 +80,11 @@
     TranscodeRegistryFrom/TranscodedType/TranscodeName, and defineSortOrder typing.
   - Added runtime tests: src/kv/codec.test.ts (KV codec roundtrip/errors/custom
     delimiters) and src/sharding/sharding.test.ts (hash determinism, suffix
-    enumeration/formatting, parameter validation).
+    enumeration/formatting, parameter validation).
+
+- Typecheck scripting and additional tsd tests
+  - package.json: removed incorrect "tsd" directory override and made
+    "typecheck" explicitly run "tsd tests/types" so failures surface in stan
+    scripts/CI.
+  - Added tests/types/transcodableProperties.test-d.ts for
+    TranscodableProperties/UntranscodableProperties with TR naming.

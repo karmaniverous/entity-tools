@@ -116,6 +116,9 @@
     "test": "vitest run",
     "typecheck": "tsc && tsd"
   },
+  "tsd": {
+    "directory": "test/types"
+  },
   "type": "module",
   "types": "dist/index.d.ts",
   "version": "0.6.9",
@@ -123,4 +126,3 @@
     "radash": "^12.1.1"
   }
 }
-

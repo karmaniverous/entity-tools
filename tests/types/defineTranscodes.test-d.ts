@@ -52,7 +52,6 @@ expectNotAssignable<'int' | 'boolean' | 'x'>(
 );
 
 // Mismatch should fail: encode/decode disagree
-// @ts-expect-error decode returns the wrong type
 defineTranscodes({
   bad: {
     encode: (v: number) => v.toString(),
