@@ -137,4 +137,9 @@
 - TS2344 fix (defineTranscodes overloads)
   - Align EncodeDecodeAgreement generic bound with the decode-only overload
     (Record<string, { decode: (string) => unknown }>) to clear TS2344 while
-    keeping encode/decode agreement checks intact.
+    keeping encode/decode agreement checks intact.
+
+- Overload order (restore mismatch tsd)
+  - Reordered defineTranscodes overloads so the inference-first signature is
+    listed first. This makes object-literal calls bind to the agreement-checked
+    overload, restoring the expected compile-time error in the mismatch test.

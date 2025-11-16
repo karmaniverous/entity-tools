@@ -37,19 +37,19 @@ export type EncodeDecodeAgreement<
 };
 
 /**
- * Value-first builder for transcode registries.
- * Overload A: fully typed registries (best for canonical/default registries).
- */
-export function defineTranscodes<TR extends TranscodeRegistry>(
-  spec: Transcodes<TR>,
-): Transcodes<TR>;
-/**
  * Overload B: inference-first — derive the registry shape from decode() return types.
  * Enforces encode/decode agreement per key.
  */
 export function defineTranscodes<
   const T extends Record<string, { decode: (value: string) => unknown }>,
 >(spec: T & EncodeDecodeAgreement<T>): Transcodes<TranscodeRegistryFrom<T>>;
+/**
+ * Value-first builder for transcode registries.
+ * Overload A: fully typed registries (best for canonical/default registries).
+ */
+export function defineTranscodes<TR extends TranscodeRegistry>(
+  spec: Transcodes<TR>,
+): Transcodes<TR>;
 export function defineTranscodes(spec: unknown) {
   // Runtime identity; types are provided by overload resolution.
   return spec;
