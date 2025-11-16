@@ -6,6 +6,12 @@ stan-core:
     - CHANGELOG.md
     - docs/**
     - package-lock.json
+  imports:
+    entity-manager:
+      - ../entity-manager/.stan/system/stan.requirements.md
+      - ../entity-manager/.stan/system/stan.todo.md
+      - ../entity-manager/dist/index.d.ts
+      - ../entity-manager/.stan/interop/entity-client-dynamodb/**
 stan-cli:
   cliDefaults:
     run:

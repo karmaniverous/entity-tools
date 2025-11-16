@@ -113,7 +113,7 @@
     "lint:fix": "npm run lint -- --fix .",
     "release": "dotenvx run -f .env.local -- release-it",
     "release:pre": "dotenvx run -f .env.local -- release-it --no-git.requireBranch --github.prerelease --preRelease",
-    "test": "dotenvx run --quiet --log-level=LOG_LEVEL=debug -- vitest run --coverage",
+    "test": "vitest run",
     "typecheck": "tsc && tsd"
   },
   "type": "module",
@@ -123,3 +123,4 @@
     "radash": "^12.1.1"
   }
 }
+
