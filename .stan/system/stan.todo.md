@@ -168,4 +168,13 @@
   - Updated src/defaultTranscodes.ts to call
     defineTranscodes<DefaultTranscodeRegistry, Transcodes<DefaultTranscodeRegistry>>(...)
     so the typed overload is selected (not the inference-first signature with a
-    single generic). Clears TS2344 in build/docs/typecheck.
+    single generic). Clears TS2344 in build/docs/typecheck.
+
+- Typed overload simplification (one generic)
+  - Simplified defineTranscodes typed overload to a single generic parameter
+    (TR) and enforced agreement against Transcodes<TR>. This ensures calls with
+    one explicit type argument (e.g., defineTranscodes<MyRegistry>(...)) bind to
+    the typed overload and restores contextual typing, resolving tsd’s constraint
+    error.
+  - Aligned defaultTranscodes to pass a single type argument so it selects the
+    typed overload consistently.

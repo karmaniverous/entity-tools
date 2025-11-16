@@ -12,10 +12,7 @@ import type { Transcodes } from './Transcodes';
  * @category Transcoding
  */
 export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
-  defineTranscodes<
-    DefaultTranscodeRegistry,
-    Transcodes<DefaultTranscodeRegistry>
-  >({
+  defineTranscodes<DefaultTranscodeRegistry>({
     bigint: {
       encode: (value: bigint) => {
         if (typeof value !== 'bigint') throw new Error('invalid bigint');

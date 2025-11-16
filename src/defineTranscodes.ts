@@ -48,14 +48,11 @@ export type EncodeDecodeAgreement<
  * Value-first builder for transcode registries.
  * Overload A: fully typed registries (best for canonical/default registries).
  */
-export function defineTranscodes<
-  TR extends TranscodeRegistry,
-  T extends Transcodes<TR>,
->(
-  spec: T &
-    // Enforce agreement based on the actual argument shape.
-    EncodeDecodeAgreement<T> &
-    // Disallow unknown in TR to prevent typed-overload from accepting unknown.
+export function defineTranscodes<TR extends TranscodeRegistry>(
+  spec: Transcodes<TR> &
+    // Enforce agreement based on the declared registry shape.
+    EncodeDecodeAgreement<Transcodes<TR>> &
+    // Disallow unknown in TR to prevent typed-overload from accepting unknowns.
     NonUnknownRegistry<TR>,
 ): Transcodes<TR>;
 /**
