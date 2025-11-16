@@ -25,9 +25,15 @@ Transcoding model (inference-first)
 - TranscodeRegistry (canonical; replaces TranscodeMap as preferred name)
   - A mapping from transcode name to the value type it encodes (e.g., { int: number; bigint20: bigint }).
   - No compatibility alias is provided.
+
 - Transcodes<TR extends TranscodeRegistry>
   - The runtime registry interface mapping each transcode name to its { encode, decode } implementation with consistent value types inferred from TR.
   - Keys are exact (Exactify) and string-literal preserving.
+
+- TranscodedType<TR extends TranscodeRegistry, TN extends TranscodeName<TR>>
+  - Convenience alias that extracts the value type for a specific transcode name within a registry:
+    - TranscodedType<TR, 'int'> resolves to TR['int'].
+  - Complements TranscodeRegistryFrom<T> for value-type access at the name level.
 
 - TranscodeRegistryFrom<T extends Record<string, Transcoder<any>>>
   - Derives a TranscodeRegistry type from a record of transcoders by mapping each key to ReturnType<decode>.
@@ -39,7 +45,7 @@ Transcoding model (inference-first)
 - defineTranscodes (value-first, compile-time agreement)
   - Signature (conceptual):
     - defineTranscodes<const T extends Record<string, Transcoder<any>>>(
-        spec: T & EncodeDecodeAgreement<T>
+      spec: T & EncodeDecodeAgreement<T>
       ): Transcodes<TranscodeRegistryFrom<T>>
   - Guarantees:
     - Preserves literal keys from spec (const).
@@ -109,15 +115,22 @@ Sharding math primitives (generic; no config coupling)
 - enumerateShardSuffixes(radix: number, chars: number): string[]
   - Preconditions: integer radix in [2..36], integer chars ≥ 0.
   - Behavior:
-    - Let space = radix ** chars.
+    - Let space = radix \*\* chars.
     - Returns an array of length space with strings "0".."(space-1)" converted via n.toString(radix), left-padded to length chars with "0".
     - For chars = 0, returns [""] (single empty suffix).
 - shardSuffixFromHash(hash: number, radix: number, chars: number): string
   - Preconditions: integer radix in [2..36], integer chars ≥ 0, hash coerced to 32-bit unsigned (hash >>> 0).
   - Behavior:
-    - Let space = radix ** chars.
+    - Let space = radix \*\* chars.
     - Let idx = hash % space.
     - Return idx.toString(radix).padStart(chars, "0") ("" for chars = 0).
+
+Sort helpers (stable typing)
+
+- Purpose: preserve property literal unions in progressive sort descriptors and improve DX without changing runtime behavior.
+- defineSortOrder<E extends Entity>(so: SortOrder<E>): SortOrder<E>
+  - Identity helper that enforces SortOrder<E> while preserving property-name literal types at call sites.
+  - No runtime changes; purely a typing/DX affordance.
 
 Existing runtime utilities (unchanged)
 
@@ -152,17 +165,19 @@ Existing type utilities (unchanged)
 Canonical naming and exports (requirements)
 
 - Exports must include:
-  - New types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeRegistryFrom<T>, TranscodeName<TR>.
+  - New types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeRegistryFrom<T>, TranscodeName<TR>, TranscodedType<TR, TN>.
   - New builder: defineTranscodes.
   - New helpers: encodePairs, decodePairs, hashString, enumerateShardSuffixes, shardSuffixFromHash.
+  - New sort helper: defineSortOrder<E>(so: SortOrder<E>): SortOrder<E>.
   - Extended acronyms: EM, E, TR, TN, PK, V.
   - Default registry types: DefaultTranscodeRegistry (canonical).
   - defaultTranscodes authored via defineTranscodes (no behavior changes vs prior implementation).
 - Typedoc/README must document:
   - How to author a custom registry with defineTranscodes (value-first).
   - How to infer TR via TranscodeRegistryFrom<typeof myTranscodes>.
-  - How to use TN<TR> and Transcodes<TR>.
+  - How to use TN<TR>, TranscodedType<TR, TN>, and Transcodes<TR>.
   - How to use the KV codec and sharding math helpers (short examples).
+  - How to use defineSortOrder for typed sort descriptors.
   - No migration notes; describe current behavior only.
 
 Type-level enforcement (requirements)
@@ -181,20 +196,24 @@ Runtime behavior and constraints
   - encodePairs/decodePairs: pure string manipulation; throw on malformed pairs during decode; no delimiter validation beyond arity; no trimming.
   - hashString: stable 32-bit unsigned integer from input; implementation must be deterministic; performance-appropriate for library usage.
   - enumerateShardSuffixes/shardSuffixFromHash: strictly base conversion and padding per requirements above.
+  - defineSortOrder: pure typing helper; identity at runtime.
 
 Acceptance criteria
 
 - New builder and types exported:
-  - defineTranscodes, Transcoder, TranscodeRegistry, TranscodeMap (alias), TranscodeRegistryFrom, TranscodeName.
+  - defineTranscodes, Transcoder, TranscodeRegistry, TranscodeRegistryFrom, TranscodeName, TranscodedType.
   - Acronyms: EM, E, TR, TN, PK, V.
 - defaultTranscodes implemented via defineTranscodes with unchanged encode/decode semantics and errors.
 - New helpers exported with unit tests:
   - encodePairs/decodePairs (round-trip on well-formed input; throws on invalid pair shapes).
   - hashString (basic invariants tests), enumerateShardSuffixes, shardSuffixFromHash (known examples and edge cases).
+- Sort helper exported with compile-time tests:
+  - defineSortOrder<E> compiles for valid SortOrder<E> and preserves property-literal unions.
 - tsd tests cover:
   - defineTranscodes inference of registry type.
   - Compile-time errors for encode/decode mismatches.
   - TN<TR> produces the expected string-literal union.
+  - TranscodedType<TR, TN> resolves to the correct value type.
 - README/Typedoc updated with concise examples demonstrating the above.
 - Lint, typecheck, tests, docs, and build succeed via repository scripts.
 

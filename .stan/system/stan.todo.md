@@ -3,10 +3,15 @@
 ## Next up
 
 - Transcoding — types and builder (inference-first)
-  - Add types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeRegistryFrom<T>, TranscodeName<TR>.
+  - Add types: Transcoder<V>, TranscodeRegistry (canonical), TranscodeRegistryFrom<T>, TranscodeName<TR>, TranscodedType<TR, TN>.
   - Implement defineTranscodes with compile-time encode/decode agreement (bi-directional
     type equality per key).
   - Export acronyms: EM, E, TR, TN, PK, V.
+
+- Sort helper (stable typing)
+  - Implement defineSortOrder<E extends Entity>(so: SortOrder<E>): SortOrder<E>.
+  - Add tsd checks to validate compile-time acceptance and preservation of property
+    literal unions in SortOrder definitions.
 
 - Default registry
   - Refactor defaultTranscodes to be authored via defineTranscodes without changing
@@ -19,6 +24,8 @@
     TranscodeRegistryFrom<typeof spec>.
   - Add tests that a mismatched encode/decode pair fails at compile time.
   - Add tests that TN<TR> produces the expected string-literal union.
+  - Add tests that TranscodedType<TR, TN> resolves to the expected value type.
+  - Add tests that defineSortOrder<E> compiles for valid SortOrder<E>.
 
 - Optional generic helpers
   - KV codec: implement encodePairs/decodePairs with the error/edge behavior defined
