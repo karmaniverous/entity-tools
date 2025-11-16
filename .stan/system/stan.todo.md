@@ -125,4 +125,11 @@
     undefined-only properties; keeps UntranscodableProperties precise.
   - defineTranscodes: EncodeDecodeAgreement now treats unknown on either side as
     a mismatch, restoring the intended compile-time failure in the mismatch
-    test. No runtime impact. Removed an unused import to satisfy ESLint.
+    test. No runtime impact. Removed an unused import to satisfy ESLint.
+
+- TSD/knip/typedoc alignment
+  - PropertiesNotOfType: apply Exactify to strip index signatures before key
+    selection; keeps UntranscodableProperties precise and excludes undefined-only
+    keys without widening to string.
+  - defineTranscodes: made IsUnknown internal (not exported) to remove knip
+    unused export and typedoc warning; relaxed inference overload to decode-only.

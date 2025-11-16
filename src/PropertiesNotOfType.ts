@@ -1,3 +1,5 @@
+import type { Exactify } from './Exactify';
+
 /**
  * Returns the properties of `object` `O` with types that do not extend type `V`. Ignores `undefined` types.
  *
@@ -7,16 +9,14 @@
  * @category Utilities
  */
 export type PropertiesNotOfType<O extends object, V> = keyof {
-  [Property in keyof O as [V] extends [never]
-    ? [NonNullable<O[Property]>] extends [never]
+  [Property in keyof Exactify<O> as [V] extends [never]
+    ? [NonNullable<Exactify<O>[Property]>] extends [never]
       ? never
       : Property
-    : [NonNullable<O[Property]>] extends [never]
+    : [NonNullable<Exactify<O>[Property]>] extends [never]
       ? never
-      : [unknown] extends [NonNullable<O[Property]>]
+      : NonNullable<Exactify<O>[Property]> extends V
         ? never
-        : NonNullable<O[Property]> extends V
-          ? never
-          : Property]: never;
+        : Property]: never;
 } &
   string;

@@ -4,7 +4,7 @@ import type { TranscodeRegistryFrom } from './TranscodeRegistryFrom';
 import type { Transcodes } from './Transcodes';
 
 // Internal helper types to enforce encode/decode agreement.
-export type IsUnknown<T> = unknown extends T
+type IsUnknown<T> = unknown extends T
   ? [T] extends [unknown]
     ? true
     : false
@@ -49,7 +49,7 @@ export function defineTranscodes<TR extends TranscodeRegistry>(
  * Enforces encode/decode agreement per key.
  */
 export function defineTranscodes<
-  const T extends Record<string, Transcoder<unknown>>,
+  const T extends Record<string, { decode: (value: string) => unknown }>,
 >(spec: T & EncodeDecodeAgreement<T>): Transcodes<TranscodeRegistryFrom<T>>;
 export function defineTranscodes(spec: unknown) {
   // Runtime identity; types are provided by overload resolution.
