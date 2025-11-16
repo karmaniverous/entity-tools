@@ -188,4 +188,19 @@
     validates assignability to Transcodes<MyRegistry>; inference-first usage and
     mismatch remain as before. This resolves the “unused @ts-expect-error”
     failure and eliminates overload-resolution churn while matching the project
-    intent: ALL typing is inference-first.
+    intent: ALL typing is inference-first.
+
+- defineTranscodes — inference bound and agreement
+  - Relaxed the generic constraint to require only decode: (string) => unknown,
+    removing the encode(unknown) requirement to allow specific encode parameter
+    types in specs (e.g., bigint, number, string).
+  - Strengthened EncodeDecodeAgreement to require presence of encode (via a
+    not-never check) and bi-directional equality between encode parameter and
+    decode return types. Resolves TS2322/TS2740 in defaultTranscodes and makes
+    the mismatch tsd error fire as intended.
+
+- Default transcodes decode annotations
+  - Added explicit `decode(value: string)` parameter types for all entries in
+    src/defaultTranscodes.ts to satisfy the inference-first builder’s decode
+    constraint and enable precise registry inference. No runtime changes; fixes
+    TS2740/TS2322/TS7006 reported by typecheck/build/docs.

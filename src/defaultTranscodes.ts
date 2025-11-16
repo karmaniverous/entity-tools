@@ -19,7 +19,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
 
         return value.toString();
       },
-      decode: (value) => {
+      decode: (value: string) => {
         try {
           return BigInt(value);
         } catch {
@@ -40,7 +40,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
 
         return `${prefix}${abs.toString().padStart(20, '0')}`;
       },
-      decode: (value) => {
+      decode: (value: string) => {
         if (!isString(value) || !/^[np][0-9]{20}$/.test(value))
           throw new Error('invalid encoded bigint20');
 
@@ -73,7 +73,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
 
         return `${prefix}${abs.toFixed(6).padStart(17, '0')}`;
       },
-      decode: (value) => {
+      decode: (value: string) => {
         if (!isString(value) || !/^[np][0-9]{10}\.[0-9]{6}$/.test(value))
           throw new Error('invalid encoded fix6');
 
@@ -88,7 +88,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
 
         return `${prefix}${abs.toString().padStart(16, '0')}`;
       },
-      decode: (value) => {
+      decode: (value: string) => {
         if (!isString(value) || !/^[np][0-9]{16}$/.test(value))
           throw new Error('invalid encoded int');
 
@@ -101,7 +101,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
 
         return value.toString();
       },
-      decode: (value) => {
+      decode: (value: string) => {
         const decode = Number(value);
 
         if (isNaN(decode)) throw new Error('invalid encoded number');
@@ -128,7 +128,7 @@ export const defaultTranscodes: Transcodes<DefaultTranscodeRegistry> =
 
         return value.toString().padStart(13, '0');
       },
-      decode: (value) => {
+      decode: (value: string) => {
         if (!isString(value) || !/^[0-9]{13}$/.test(value))
           throw new Error('invalid encoded timestamp');
 

@@ -15,16 +15,17 @@ export type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
  * and VK matches in both positions (bi-directionally).
  */
 export type EncodeDecodeAgreement<
-  T extends Record<
-    string,
-    { encode: (value: unknown) => string; decode: (value: string) => unknown }
-  >,
+  T extends Record<string, { decode: (value: string) => unknown }>,
 > = {
-  [K in keyof T]-?: [EncodeParam<T[K]>] extends [DecodeReturn<T[K]>]
-    ? [DecodeReturn<T[K]>] extends [EncodeParam<T[K]>]
-      ? T[K]
-      : never
-    : never;
+  [K in keyof T]-?: [EncodeParam<T[K]>] extends [never]
+    ? never
+    : [DecodeReturn<T[K]>] extends [never]
+      ? never
+      : [EncodeParam<T[K]>] extends [DecodeReturn<T[K]>]
+        ? [DecodeReturn<T[K]>] extends [EncodeParam<T[K]>]
+          ? T[K]
+          : never
+        : never;
 };
 
 /**
@@ -32,10 +33,7 @@ export type EncodeDecodeAgreement<
  * Enforces encode/decode agreement per key.
  */
 export function defineTranscodes<
-  const T extends Record<
-    string,
-    { encode: (value: unknown) => string; decode: (value: string) => unknown }
-  >,
+  const T extends Record<string, { decode: (value: string) => unknown }>,
 >(spec: T & EncodeDecodeAgreement<T>): Transcodes<TranscodeRegistryFrom<T>> {
   // Runtime identity; types come from the single signature.
   return spec as unknown as Transcodes<TranscodeRegistryFrom<T>>;
