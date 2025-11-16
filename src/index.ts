@@ -37,6 +37,11 @@ export type { WithRequiredAndNonNullable } from './WithRequiredAndNonNullable';
 export type { EncodeDecodeAgreement } from './defineTranscodes';
 export type { EncodeParam } from './defineTranscodes';
 export type { DecodeReturn } from './defineTranscodes';
+export type {
+  EncodeDecodeMismatchError,
+  MissingDecodeError,
+  MissingEncodeError,
+} from './defineTranscodes';
 export { defineTranscodes } from './defineTranscodes';
 export type { TranscodedType } from './TranscodedType';
 export type { TranscodeName } from './TranscodeName';
