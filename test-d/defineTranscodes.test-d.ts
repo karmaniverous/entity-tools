@@ -61,8 +61,8 @@ expectNotAssignable<TranscodeName<InferredTR>>('x' as const);
 // Mismatch should fail: encode/decode disagree
 // Satisfy the Transcoder<unknown> boundary (encode param = unknown),
 // but break the agreement (decode returns string, not unknown) to trigger an error.
-// @ts-expect-error encode/decode types do not agree
 defineTranscodes({
+  // @ts-expect-error encode/decode types do not agree
   bad: {
     encode: (_v: unknown) => '',
     // wrong decode type on purpose:

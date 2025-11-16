@@ -203,4 +203,9 @@
   - Added explicit `decode(value: string)` parameter types for all entries in
     src/defaultTranscodes.ts to satisfy the inference-first builder’s decode
     constraint and enable precise registry inference. No runtime changes; fixes
-    TS2740/TS2322/TS7006 reported by typecheck/build/docs.
+    TS2740/TS2322/TS7006 reported by typecheck/build/docs.
+
+- TSD directive placement
+  - Moved the `@ts-expect-error` directive in
+    test-d/defineTranscodes.test-d.ts to the offending property line (`bad:`)
+    so it suppresses the correct node and resolves the tsd failure.
