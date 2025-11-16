@@ -1,6 +1,0 @@
-{
-  "directory": "tests/types",
-  "compilerOptions": {
-    "strict": true
-  }
-}

@@ -27,7 +27,7 @@ export default [
       'dist/**',
       'docs/**',
       'node_modules/**',
-      'tests/**/*.test-d.ts',
+      '**/*.test-d.ts',
     ],
   },
   eslint.configs.recommended,

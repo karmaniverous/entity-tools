@@ -15,7 +15,6 @@
     "strict": true,
     "types": ["node", "vitest/globals"]
   },
-  "exclude": ["coverage", "dist", "docs", "node_modules", "tests/**"],
+  "exclude": ["coverage", "dist", "docs", "node_modules", "test-d/**"],
   "include": ["**/*"]
 }
-

@@ -1,6 +1,6 @@
 import { expectAssignable, expectNotAssignable, expectType } from 'tsd';
 
-import type { MutuallyExclusive } from '../../src/MutuallyExclusive';
+import type { MutuallyExclusive } from '../src/MutuallyExclusive';
 
 // Positive: equals true
 type Happy = MutuallyExclusive<['a', 'b' | 'c', 'd']>;

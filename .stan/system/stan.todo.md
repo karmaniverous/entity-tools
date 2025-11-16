@@ -87,4 +87,9 @@
     "typecheck" explicitly run "tsd tests/types" so failures surface in stan
     scripts/CI.
   - Added tests/types/transcodableProperties.test-d.ts for
-    TranscodableProperties/UntranscodableProperties with TR naming.
+    TranscodableProperties/UntranscodableProperties with TR naming.
+
+- TSD location normalization
+  - Consolidated tsd tests under test-d/ and adjusted assertions to use concrete
+    literals (no unknown/never casts), preventing false positives and ensuring
+    clear, actionable failures in CI.
