@@ -12,9 +12,9 @@ export type PropertiesNotOfType<O extends object, V> = keyof {
       ? never
       : Property
     : [NonNullable<O[Property]>] extends [never]
-      ? NonNullable<O[Property]> extends V
-        ? Property
-        : never
-      : never]: never;
+      ? never
+      : NonNullable<O[Property]> extends V
+        ? never
+        : Property]: never;
 } &
   string;

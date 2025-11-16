@@ -9,7 +9,7 @@ import type { Transcoder } from './Transcoder';
  + // \{ int: number \}
  */
 export type TranscodeRegistryFrom<
-  T extends Record<string, Transcoder<unknown>>,
+  T extends Record<string, { decode: (value: string) => unknown }>,
 > = {
   [K in keyof T]: T[K] extends { decode: (value: string) => infer V }
     ? V

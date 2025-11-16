@@ -109,3 +109,13 @@
     - Derive TranscodeRegistryFrom from the spec (no builder invocation).
     - Mismatch test: encode accepts unknown (boundary OK), decode returns string
       (agreement fails as intended).
+- TSD fixes (PropertiesNotOfType & TranscodeRegistryFrom)
+  - PropertiesNotOfType: corrected logic to exclude undefined-only properties
+    and invert the V check properly. This fixes tsd assertions where 'd' (only
+    undefined) must be excluded from UntranscodableProperties and 'e' (bigint)
+    must be included.
+  - TranscodeRegistryFrom: relaxed the generic constraint to require only a
+    decode signature (`{ decode: (string) => unknown }`). This enables
+    value-first literal specs (with precise encode parameter types) to be used
+    directly without a cast while preserving "never use any" policy.
+  - Verified: vitest still passes; typecheck now succeeds for tsd cases.
