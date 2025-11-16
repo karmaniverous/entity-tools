@@ -92,4 +92,10 @@
 - TSD location normalization
   - Consolidated tsd tests under test-d/ and adjusted assertions to use concrete
     literals (no unknown/never casts), preventing false positives and ensuring
-    clear, actionable failures in CI.
+    clear, actionable failures in CI.
+
+- TSD fixes (test-d)
+  - defineTranscodes.test-d.ts: derive registry from spec (not built object);
+    assert TranscodedType/TranscodeName via literals; added @ts-expect-error for
+    mismatch; stabilized assertions.
+  - transcodableProperties.test-d.ts: assert unions via 'a'|'b'|'c' literals; added a default registry assignability test.

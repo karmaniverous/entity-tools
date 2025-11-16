@@ -31,7 +31,7 @@ const typedBuilt = defineTranscodes<MyRegistry>(typedSpec);
 expectAssignable<Transcodes<MyRegistry>>(typedBuilt);
 
 // Inference-first usage (derive TR from decode())
-const inferred = defineTranscodes({
+const inferredSpec = {
   int: {
     encode: (v: number) => v.toString(),
     decode: (s: string) => Number(s),
@@ -40,9 +40,9 @@ const inferred = defineTranscodes({
     encode: (v: boolean) => (v ? 't' : 'f'),
     decode: (s: string) => s === 't',
   },
-} as const);
-
-type InferredTR = TranscodeRegistryFrom<typeof inferred>;
+} as const;
+const inferred = defineTranscodes(inferredSpec);
+type InferredTR = TranscodeRegistryFrom<typeof inferredSpec>;
 
 // Derived value types: TranscodedType resolves to number and boolean
 type TInt = TranscodedType<InferredTR, 'int'>;
@@ -73,3 +73,4 @@ expectAssignable<SortOrder<E>>(so);
 
 // @ts-expect-error invalid property name
 defineSortOrder<E>([{ property: 'z' as const }]);
+

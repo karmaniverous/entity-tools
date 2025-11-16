@@ -1,16 +1,15 @@
 import { expectAssignable, expectNotAssignable } from 'tsd';
 
 import type { Entity } from '../src/Entity';
-import type { TranscodableProperties } from '../src/TranscodableProperties';import type { TranscodeRegistry } from '../src/TranscodeRegistry';
+import type { TranscodableProperties } from '../src/TranscodableProperties';
+import type { TranscodeRegistry } from '../src/TranscodeRegistry';
 import type { UntranscodableProperties } from '../src/UntranscodableProperties';
 
 // Registry with number|string|boolean support
 
 interface R extends TranscodeRegistry {
   num: number;
-
   str: string;
-
   bool: boolean;
 }
 
@@ -18,13 +17,9 @@ interface R extends TranscodeRegistry {
 
 type E = Entity & {
   a: number;
-
   b: string;
-
   c?: boolean | null;
-
   d?: undefined;
-
   e: bigint;
 };
 
@@ -32,14 +27,14 @@ type E = Entity & {
 
 type TP = TranscodableProperties<E, R>;
 
-expectAssignable<'a' | 'b' | 'c'>(null as unknown as TP);
-
-expectNotAssignable<'a' | 'b' | 'c' | 'e'>(null as unknown as TP);
+expectAssignable<TP>('a' as const);
+expectAssignable<TP>('b' as const);
+expectAssignable<TP>('c' as const);
+expectNotAssignable<TP>('e' as const);
 
 // Untranscodables exclude undefined-only fields and include properties not covered by TR
 
 type UP = UntranscodableProperties<E, R>;
 
-expectAssignable<'e'>(null as unknown as UP);
-
-expectNotAssignable<'d'>(null as unknown as UP);
+expectAssignable<UP>('e' as const);
+expectNotAssignable<UP>('d' as const);
