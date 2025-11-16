@@ -1,3 +1,4 @@
+import type { Exactify } from './Exactify';
 import type { TranscodeRegistry } from './TranscodeRegistry';
 import type { TranscodeRegistryFrom } from './TranscodeRegistryFrom';
 import type { Transcodes } from './Transcodes';
@@ -15,6 +16,13 @@ export type EncodeParam<F> = F extends { encode: (value: infer V) => string }
 export type DecodeReturn<F> = F extends { decode: (value: string) => infer V }
   ? V
   : never;
+
+/**
+ * Helper to disallow unknown-valued entries in typed registries.
+ */
+type NonUnknownRegistry<TR extends TranscodeRegistry> = {
+  [K in keyof Exactify<TR>]-?: IsUnknown<TR[K]> extends true ? never : unknown;
+};
 
 /**
  * Ensures that for each entry K:
@@ -47,8 +55,15 @@ export function defineTranscodes<
  * Value-first builder for transcode registries.
  * Overload A: fully typed registries (best for canonical/default registries).
  */
-export function defineTranscodes<TR extends TranscodeRegistry>(
-  spec: Transcodes<TR>,
+export function defineTranscodes<
+  TR extends TranscodeRegistry,
+  T extends Transcodes<TR>,
+>(
+  spec: T &
+    // Enforce agreement based on the actual argument shape.
+    EncodeDecodeAgreement<T> &
+    // Disallow unknown in TR to prevent typed-overload from accepting unknown.
+    NonUnknownRegistry<TR>,
 ): Transcodes<TR>;
 export function defineTranscodes(spec: unknown) {
   // Runtime identity; types are provided by overload resolution.

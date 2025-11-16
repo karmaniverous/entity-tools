@@ -142,4 +142,17 @@
 - Overload order (restore mismatch tsd)
   - Reordered defineTranscodes overloads so the inference-first signature is
     listed first. This makes object-literal calls bind to the agreement-checked
-    overload, restoring the expected compile-time error in the mismatch test.
+    overload, restoring the expected compile-time error in the mismatch test.
+
+- Typed overload guard (unknown)
+  - Added NonUnknownRegistry guard to the typed overload parameter so registries
+    with unknown value types do not match the typed overload. This forces
+    object-literal calls with unknown-typed encode params to bind to the
+    inference-first overload (which enforces agreement), restoring the tsd
+    mismatch failure without affecting normal typed registries.
+
+- Typed overload enforces agreement on actual spec
+  - Updated the typed overload to introduce a second generic `T extends
+    Transcodes<TR>` and require `EncodeDecodeAgreement<T>`. This checks
+    encode/decode equality against the passed argument shape, ensuring the
+    mismatch test triggers a compile error even if the typed overload is chosen.
