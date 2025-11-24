@@ -2,214 +2,214 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/index.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/modules.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/hierarchy.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/documents/CHANGELOG.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/modules/entity-tools.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/interfaces/entity-tools.DefaultTranscodeRegistry.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.AllDisjoint.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.ConditionalProperty.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.DecodeReturn.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.EncodeDecodeAgreement.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.EncodeDecodeMismatchError.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.EncodeParam.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.Entity.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.EntityKeys.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.EntityMap.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.EntityMapValues.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.EntityValue.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.Exactify.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.FlattenEntityMap.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.MakeOptional.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.MakeRequired.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.MakeUpdatable.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.MissingDecodeError.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.MissingEncodeError.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.MutuallyExclusive.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.Nil.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.NotNever.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.PropertiesNotOfType.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.PropertiesOfType.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.ReplaceKey.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.ReplaceKeys.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.SortOrder.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.TranscodableProperties.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.TranscodedType.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.TranscodeName.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.Transcoder.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.TranscodeRegistry.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.TranscodeRegistryFrom.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.Transcodes.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.UntranscodableProperties.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/types/entity-tools.WithRequiredAndNonNullable.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/variables/entity-tools.defaultTranscodes.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.conditionalize.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.decodePairs.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.defineSortOrder.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.defineTranscodes.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.encodePairs.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.enumerateShardSuffixes.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.hashString.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.isNil.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.shardSuffixFromHash.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.sort.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 	<url>
 		<loc>https://docs.karmanivero.us/entity-tools/functions/entity-tools.updateRecord.html</loc>
-		<lastmod>2025-11-17T00:05:22.833Z</lastmod>
+		<lastmod>2025-11-24T08:47:08.799Z</lastmod>
 	</url>
 </urlset>

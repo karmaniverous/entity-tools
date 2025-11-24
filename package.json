@@ -1,5 +1,11 @@
 {
   "author": "Jason Williscroft",
+  "auto-changelog": {
+    "commitLimit": false,
+    "hideCredit": true,
+    "output": "CHANGELOG.md",
+    "unreleased": true
+  },
   "bugs": {
     "url": "https://github.com/karmaniverous/entity-tools/issues"
   },
@@ -110,6 +116,7 @@
   },
   "scripts": {
     "build": "rimraf dist && rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "changelog": "auto-changelog",
     "docs": "typedoc",
     "knip": "knip",
     "lint": "eslint .",

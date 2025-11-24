@@ -8,6 +8,8 @@
 
 ## Completed (recent)
 
+**CRITICAL: This list is append-only; do not edit items! Place most recent entries at the BOTTOM of the list. When pruning, remove older entries from the top.**
+
 - EntityManager.getPrimaryKey returns arrays and supports no-timestamp items
   - Changed getPrimaryKey to always return EntityKey[].
   - If overwrite=false and both hashKey and rangeKey are present on the item,
@@ -24,7 +26,8 @@
     instead of dynamic string indexing to satisfy TS7053 and ESLint rules.
 
 - Shard-space narrowing based on uniqueProperty presence
-  - getHashKeySpace now automatically constrains to exactly one shard suffix    per bump when the item's uniqueProperty is present (non-null/undefined),
+  - getHashKeySpace now automatically constrains to exactly one shard suffix
+    per bump when the item's uniqueProperty is present (non-null/undefined),
     for both global and sharded hash keys. Otherwise it enumerates the full
     shard space (unchanged).
   - Alternate sharded keys still require appropriate elements; missing
@@ -41,4 +44,4 @@
 
 - Requirements: create authoritative stan.requirements.md
   - Extracted and formalized current implementation behavior (global config model,
-    delimiters, sharding, page-key dehydration/rehydration, query orchestration).
+    delimiters, sharding, page-key dehydration/rehydration, query orchestration).
