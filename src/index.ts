@@ -31,7 +31,7 @@ export type { TranscodableProperties } from './TranscodableProperties';
 export type { TranscodeRegistry } from './TranscodeRegistry';
 export type { Transcodes } from './Transcodes';
 export type { UntranscodableProperties } from './UntranscodableProperties';
-export { updateRecord } from './updateRecord';
+export { updateItem } from './updateItem';
 export type { WithRequiredAndNonNullable } from './WithRequiredAndNonNullable';
 // Transcoding helpers and names
 export type { EncodeDecodeAgreement } from './defineTranscodes';

@@ -27,7 +27,7 @@ Runtime utilities
 - defaultTranscodes: ready-made Transcodes supporting the DefaultTranscodeRegistry (boolean, string, number, fix6, int, bigint, bigint20, timestamp).
 - isNil(value): Nil type-guard (null | undefined).
 - sort(items, sortOrder): stable, progressive sort over Entity properties (numbers, strings, bigints, null/undefined, and truthiness fallback).
-- updateRecord(record, update): shallow update that ignores undefined, assigns nulls, and removes null/undefined from the result.
+- updateItem(record, update): shallow update that ignores undefined, assigns nulls, and removes null/undefined from the result.
 
 Core types (entities and sorting)
 
@@ -91,7 +91,7 @@ const result = sort(users, order);
 Shallow updates
 
 ```ts
-import { updateRecord } from '@karmaniverous/entity-tools';
+import { updateItem } from '@karmaniverous/entity-tools';
 
 const original = {
   id: 1,
@@ -104,7 +104,7 @@ const patch = {
   extra: undefined as string | undefined,
 };
 
-const updated = updateRecord(original, patch);
+const updated = updateItem(original, patch);
 // { id: 1, name: 'Alicia' }  // note and extra are removed (null/undefined stripped)
 ```
 

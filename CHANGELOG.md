@@ -89,7 +89,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 > 14 November 2024
 
-- added updateRecord [`efdb537`](https://github.com/karmaniverous/entity-tools/commit/efdb5377c1d82b18db434ae5e2212c7a89ca052a)
+- added updateItem [`efdb537`](https://github.com/karmaniverous/entity-tools/commit/efdb5377c1d82b18db434ae5e2212c7a89ca052a)
 - chore: release v0.6.8 [`8e4e41f`](https://github.com/karmaniverous/entity-tools/commit/8e4e41f9083a8bebd0bf2f0ac8d2fa01ba84520b)
 
 #### [0.6.7](https://github.com/karmaniverous/entity-tools/compare/0.6.6...0.6.7)
@@ -317,3 +317,4 @@ All notable changes to this project will be documented in this file. Dates are d
 - added sort & uniq [`1b89298`](https://github.com/karmaniverous/entity-tools/commit/1b89298d76b29b17209dd0bf6f9fcd4ee18da99d)
 - updated docs [`e1326e2`](https://github.com/karmaniverous/entity-tools/commit/e1326e25c72c0f7fe23116135dfbb659416cdb8b)
 - chore: release v0.0.1 [`402d9d0`](https://github.com/karmaniverous/entity-tools/commit/402d9d01a6bfafd048ad3776cd1673abbabd9c9e)
+
