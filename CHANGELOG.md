@@ -2,8 +2,10 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/karmaniverous/entity-tools/compare/0.7.1...HEAD)
+#### [0.8.0](https://github.com/karmaniverous/entity-tools/compare/0.7.1...0.8.0)
 
+- updateRecord -&gt; updateItem [`b048fae`](https://github.com/karmaniverous/entity-tools/commit/b048fae6ca5b8cd8b3390fea2cbfab88f9598175)
+- updated docs [`b1a10eb`](https://github.com/karmaniverous/entity-tools/commit/b1a10eb78f07934418c86ce5307e7bfd406d76d3)
 - pruned todo [`f887ac8`](https://github.com/karmaniverous/entity-tools/commit/f887ac82f7f54ee9dcbeb7e9afc1221e768db12a)
 - stan lint warnings [`f7735c1`](https://github.com/karmaniverous/entity-tools/commit/f7735c1b29bf106ade371ebb1446a6dbcd86fdec)
 
@@ -89,7 +91,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 > 14 November 2024
 
-- added updateItem [`efdb537`](https://github.com/karmaniverous/entity-tools/commit/efdb5377c1d82b18db434ae5e2212c7a89ca052a)
+- added updateRecord [`efdb537`](https://github.com/karmaniverous/entity-tools/commit/efdb5377c1d82b18db434ae5e2212c7a89ca052a)
 - chore: release v0.6.8 [`8e4e41f`](https://github.com/karmaniverous/entity-tools/commit/8e4e41f9083a8bebd0bf2f0ac8d2fa01ba84520b)
 
 #### [0.6.7](https://github.com/karmaniverous/entity-tools/compare/0.6.6...0.6.7)
@@ -317,4 +319,3 @@ All notable changes to this project will be documented in this file. Dates are d
 - added sort & uniq [`1b89298`](https://github.com/karmaniverous/entity-tools/commit/1b89298d76b29b17209dd0bf6f9fcd4ee18da99d)
 - updated docs [`e1326e2`](https://github.com/karmaniverous/entity-tools/commit/e1326e25c72c0f7fe23116135dfbb659416cdb8b)
 - chore: release v0.0.1 [`402d9d0`](https://github.com/karmaniverous/entity-tools/commit/402d9d01a6bfafd048ad3776cd1673abbabd9c9e)
-
