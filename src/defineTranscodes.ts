@@ -44,6 +44,9 @@ export type MissingEncodeError<K extends string> = {
   key: K;
 };
 
+/**
+ * Branded error shape indicating a missing `decode` implementation for a key.
+ */
 export type MissingDecodeError<K extends string> = {
   /**
    * Error discriminant.
@@ -56,6 +59,9 @@ export type MissingDecodeError<K extends string> = {
   key: K;
 };
 
+/**
+ * Branded error shape indicating `encode`/`decode` type disagreement for a key.
+ */
 export type EncodeDecodeMismatchError<K extends string, E, D> = {
   /**
    * Error discriminant.

@@ -8,4 +8,5 @@
 ## Completed
 
 - Added missing TSDoc to eliminate TypeDoc warnings (encode/decode fields and branded error shapes).
-- Fixed `TranscodeRegistryFrom` constraint so `defineTranscodes` can typecheck and TypeDoc can build.
+- Fixed `TranscodeRegistryFrom` constraint so `defineTranscodes` can typecheck and TypeDoc can build.
+- Documented `MissingDecodeError` and `EncodeDecodeMismatchError` to satisfy TypeDoc `validation.notDocumented`.
