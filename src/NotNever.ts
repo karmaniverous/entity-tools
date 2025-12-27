@@ -23,7 +23,12 @@ export type NotNever<
 > = N extends [infer Head, ...infer Tail]
   ? Head extends string & keyof T
     ? [T[Head]] extends [never]
-      ? { __error__: `${Head} is never` }
+      ? {
+          /**
+           * Branded error string indicating which key was detected as `never`.
+           */
+          __error__: `${Head} is never`;
+        }
       : Tail extends string[]
         ? NotNever<T, Tail extends (string & keyof T)[] ? Tail : []>
         : true

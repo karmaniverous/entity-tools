@@ -2,6 +2,9 @@
 
 ## Next up (in priority order)
 
-## Recently Completed Tasks
+ - Run `npm run docs` and confirm 0 warnings.
+ - Keep TypeDoc-facing TSDoc updated when exported types change.
 
-**CRITICAL: This list is append-only; do not edit items! Place most recent entries at the BOTTOM of the list. When pruning, remove older entries from the top.**
+## Completed
+
+- Added missing TSDoc to eliminate TypeDoc warnings (encode/decode fields and branded error shapes).

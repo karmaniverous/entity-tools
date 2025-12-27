@@ -25,7 +25,12 @@ export type AllDisjoint<
   ? [Head] extends [string]
     ? [First & Head] extends [never]
       ? AllDisjoint<First, Tail extends string[] ? Tail : []>
-      : { __error__: `overlaps on ${First}` }
+      : {
+          /**
+           * Branded error string indicating which member overlaps.
+           */
+          __error__: `overlaps on ${First}`;
+        }
     : true
   : true;
 

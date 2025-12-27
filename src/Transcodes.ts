@@ -59,7 +59,18 @@ import type { TranscodeRegistry } from './TranscodeRegistry';
  */
 export type Transcodes<TR extends TranscodeRegistry> = {
   [P in keyof Exactify<TR>]: {
+    /**
+     * Encodes a value of the mapped type into a string.
+     *
+     * @throws Should throw when the input value is invalid.
+     */
     encode: (value: TR[P]) => string;
+
+    /**
+     * Decodes a string into the mapped value type.
+     *
+     * @throws Should throw when the encoded string is invalid.
+     */
     decode: (value: string) => TR[P];
   };
 };

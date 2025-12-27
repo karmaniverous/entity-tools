@@ -9,6 +9,13 @@ import type { Exactify } from './Exactify';
  * @category Sort
  */
 export type SortOrder<E extends Entity> = {
+  /**
+   * The entity property name to sort by.
+   */
   property: keyof Exactify<E>;
+
+  /**
+   * If true, sorts this property in descending order.
+   */
   desc?: boolean;
 }[];
