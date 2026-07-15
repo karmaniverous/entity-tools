@@ -2,10 +2,24 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [0.8.1](https://github.com/karmaniverous/entity-tools/compare/0.8.0...0.8.1)
+
+- chore: update all dependencies to latest [`#2`](https://github.com/karmaniverous/entity-tools/pull/2)
+- added stan assistant guide [`730bfee`](https://github.com/karmaniverous/entity-tools/commit/730bfee294bb6a4d9a14c149c7376ea1854954c5)
+- cleanup [`2064649`](https://github.com/karmaniverous/entity-tools/commit/2064649b9d244e54be4ecd3a75574fdadb2336cb)
+- docs: silence typedoc warnings [`abf28ab`](https://github.com/karmaniverous/entity-tools/commit/abf28abef527d164c0b6f443dc595fd507404176)
+- fix: unblock docs/typecheck for defineTranscodes [`15482ef`](https://github.com/karmaniverous/entity-tools/commit/15482ef0c99eae17e55fa454012232f9cd77afa2)
+- ni [`a7d8fbb`](https://github.com/karmaniverous/entity-tools/commit/a7d8fbb2189900023da4be4c3764ed24761f4fcc)
+- chore: add copilot review instructions [`846346e`](https://github.com/karmaniverous/entity-tools/commit/846346e1b9ef44cba721df60c63523d6cfebfe1f)
+- docs: fix remaining typedoc notDocumented [`4a210b7`](https://github.com/karmaniverous/entity-tools/commit/4a210b79b5e3143e57f685a49d5e5ffb41049180)
+
 #### [0.8.0](https://github.com/karmaniverous/entity-tools/compare/0.7.1...0.8.0)
+
+> 1 December 2025
 
 - updateRecord -&gt; updateItem [`b048fae`](https://github.com/karmaniverous/entity-tools/commit/b048fae6ca5b8cd8b3390fea2cbfab88f9598175)
 - updated docs [`b1a10eb`](https://github.com/karmaniverous/entity-tools/commit/b1a10eb78f07934418c86ce5307e7bfd406d76d3)
+- chore: release v0.8.0 [`e226732`](https://github.com/karmaniverous/entity-tools/commit/e226732e1118190a6188fc96245932047318f21a)
 - pruned todo [`f887ac8`](https://github.com/karmaniverous/entity-tools/commit/f887ac82f7f54ee9dcbeb7e9afc1221e768db12a)
 - stan lint warnings [`f7735c1`](https://github.com/karmaniverous/entity-tools/commit/f7735c1b29bf106ade371ebb1446a6dbcd86fdec)
 
