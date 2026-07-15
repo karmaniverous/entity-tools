@@ -8,11 +8,13 @@
  * @category Utilities
  */
 export type Exactify<O extends object> = {
-  [P in keyof O as string extends P
-    ? never
-    : number extends P
+  [
+    P in keyof O as string extends P
       ? never
-      : symbol extends P
+      : number extends P
         ? never
-        : P]: O[P];
+        : symbol extends P
+          ? never
+          : P
+  ]: O[P];
 };
