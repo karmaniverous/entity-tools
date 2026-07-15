@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "tsBuildInfoFile": "./.tsbuildinfo",
+    "outDir": ".tsbuild",
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -15,6 +14,6 @@
     "strict": true,
     "types": ["node", "vitest/globals"]
   },
-  "exclude": ["coverage", "dist", "docs", "node_modules", "test-d/**"],
+  "exclude": ["coverage", "dist", "docs", "node_modules", "test-d/**", "rollup.config-*.mjs"],
   "include": ["**/*"]
 }

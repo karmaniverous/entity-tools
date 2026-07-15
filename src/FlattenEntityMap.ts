@@ -22,8 +22,7 @@ export type EntityKeys<E extends Entity> = E extends E ? keyof E : never;
  * @protected
  */
 export type EntityValue<E extends Entity, PK extends PropertyKey> = E extends
-  | Record<PK, infer V>
-  | Partial<Record<PK, infer V>>
+  Record<PK, infer V> | Partial<Record<PK, infer V>>
   ? V
   : never;
 

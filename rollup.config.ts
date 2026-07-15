@@ -18,11 +18,11 @@ const pkgJson = require('./package.json') as Pkg;
 
 const outputPath = `dist`;
 
-const commonPlugins = [
+const commonPlugins = (outDir: string) => [
   commonjsPlugin(),
   jsonPlugin(),
   nodeResolve(),
-  typescriptPlugin(),
+  typescriptPlugin({ compilerOptions: { outDir }, outputToFilesystem: true }),
 ];
 
 // Alias entries for '@rollup/plugin-alias'.
@@ -36,13 +36,16 @@ const commonInputOptions = {
     ...Object.keys(pkgJson.peerDependencies ?? {}),
     'tslib',
   ],
-  plugins: [aliasPlugin({ entries: commonAliases }), ...commonPlugins],
 };
 
 const config = [
   // ESM output.
   {
     ...commonInputOptions,
+    plugins: [
+      aliasPlugin({ entries: commonAliases }),
+      ...commonPlugins(`${outputPath}/mjs`),
+    ],
     output: [
       {
         dir: `${outputPath}/mjs`,
@@ -56,6 +59,10 @@ const config = [
   // CommonJS output.
   {
     ...commonInputOptions,
+    plugins: [
+      aliasPlugin({ entries: commonAliases }),
+      ...commonPlugins(`${outputPath}/cjs`),
+    ],
     output: [
       {
         dir: `${outputPath}/cjs`,
@@ -69,7 +76,11 @@ const config = [
   // Type definitions output.
   {
     ...commonInputOptions,
-    plugins: [...commonInputOptions.plugins, dtsPlugin()],
+    plugins: [
+      aliasPlugin({ entries: commonAliases }),
+      ...commonPlugins(outputPath),
+      dtsPlugin(),
+    ],
     output: [
       {
         extend: true,

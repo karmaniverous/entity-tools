@@ -9,14 +9,16 @@ import type { Exactify } from './Exactify';
  * @category Utilities
  */
 export type PropertiesNotOfType<O extends object, V> = keyof {
-  [Property in keyof Exactify<O> as [V] extends [never]
-    ? [NonNullable<Exactify<O>[Property]>] extends [never]
-      ? never
-      : Property
-    : [NonNullable<Exactify<O>[Property]>] extends [never]
-      ? never
-      : NonNullable<Exactify<O>[Property]> extends V
+  [
+    Property in keyof Exactify<O> as [V] extends [never]
+      ? [NonNullable<Exactify<O>[Property]>] extends [never]
         ? never
-        : Property]: never;
+        : Property
+      : [NonNullable<Exactify<O>[Property]>] extends [never]
+        ? never
+        : NonNullable<Exactify<O>[Property]> extends V
+          ? never
+          : Property
+  ]: never;
 } &
   string;
