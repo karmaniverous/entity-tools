@@ -1,5 +1,0 @@
-stanPath: .stan
-includes: []
-excludes: []
-scripts: {}
-patchOpenCommand: code -g {file}

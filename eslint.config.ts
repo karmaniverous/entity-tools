@@ -20,7 +20,6 @@ export default [
   // Ignore generated/build artifacts and STAN workspace
   {
     ignores: [
-      '.stan/**',
       '.rollup.cache/**',
       '**/.tsbuild/**',
       'coverage/**',

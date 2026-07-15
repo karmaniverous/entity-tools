@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "ignore": [".stan/**", "docs/**", "test-d/**"],
+  "ignore": ["docs/**", "test-d/**"],
   "ignoreDependencies": ["auto-changelog", "cross-env"]
 }
 
